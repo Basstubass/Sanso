@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+
+body{
+    margin: 0;
+    background-color: #6A7788;
+}
+.header{
+    height: 130px;
+    background: -moz-linear-gradient(top, #FFF, black);
+    background: -webkit-linear-gradient(top,  rgb(104, 103, 103), black);
+    background: linear-gradient(to bottom,  rgb(79, 79, 79), black);
+    /* position: relative; */
+}
+.header h1{
+    color: white;
+    margin: 0;
+    text-align: center;
+    padding-top: 3%;
+    font-size: 40px;
+    font-family: 'Merriweather', serif;
+}
+.header-menu{
+    text-align: center;
+    padding-top: 3%;
+}
+.header-menu ul{
+    margin: 0;
+    padding: 0;
+}
+.header-menu ul li{
+    font-family: 'Merriweather', serif;
+    list-style: none;
+    color: white;
+    display: inline;
+    padding-left: 3%;
+    font-size: 18px;
+}
+
+
+/* //////////////////////////////////// */
+
+.main{
+
+}
+.my_photo{
+    width: 211px;
+    height: 279px;
+    background-color: antiquewhite;
+}
