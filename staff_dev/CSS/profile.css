@@ -1,0 +1,29 @@
+#profile_main{
+  display:inline-block;
+  font-size:20px;
+  margin: 25px;
+  height: 20px;
+  padding:10px;
+}
+
+.sub_title_list{
+  text-align:center;
+  margin-top: 30px;
+}
+
+ul{
+  list-style-type:none;
+  padding-left:50px;
+  margin:10px;
+}
+
+.list{
+  display:inline-block;
+  text-align:left;
+}
+
+ol{
+  list-style:decimal;
+  padding-left:80px;
+  margin:10px;
+}
