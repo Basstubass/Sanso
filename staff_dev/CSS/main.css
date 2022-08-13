@@ -39,12 +39,28 @@ body{
 
 
 /* //////////////////////////////////// */
-
 .main{
-
+    text-align: center;
+}
+#my_brock{
+    display: inline-block;
+    margin-left: 3%;
 }
 .my_photo{
-    width: 211px;
-    height: 279px;
+    width: 253px;
+    height: 334px;
     background-color: antiquewhite;
+    margin-top: 10%;
+}
+.profile{
+    background-color: antiquewhite;
+    height: 334px;
+    width: 750px;
+    margin-top: 10%;
+}
+.whats_news{
+    width: 1050px;
+    height: 500px;
+    background-color: antiquewhite;
+    margin-top: 4%;
 }
