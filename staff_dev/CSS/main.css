@@ -6,7 +6,7 @@ body{
     background-color: #6A7788;
 }
 .header{
-    height: 130px;
+    height: 150px;
     background: -moz-linear-gradient(top, #FFF, black);
     background: -webkit-linear-gradient(top,  rgb(104, 103, 103), black);
     background: linear-gradient(to bottom,  rgb(79, 79, 79), black);
@@ -16,7 +16,7 @@ body{
     color: white;
     margin: 0;
     text-align: center;
-    padding-top: 3%;
+    padding-top: 2%;
     font-size: 40px;
     font-family: 'Merriweather', serif;
 }
@@ -45,18 +45,17 @@ body{
 #my_brock{
     display: inline-block;
     margin-left: 3%;
+    margin-top: 8%;
 }
 .my_photo{
     width: 253px;
     height: 334px;
     background-color: antiquewhite;
-    margin-top: 10%;
 }
 .profile{
     background-color: antiquewhite;
     height: 334px;
     width: 750px;
-    margin-top: 10%;
 }
 .whats_news{
     width: 1050px;
