@@ -62,39 +62,3 @@ body{
     width: 1050px;
     height: 500px;
     background-color: antiquewhite;
-<<<<<<< HEAD
-    margin-top: 4%;
-}
-=======
-}
-
-  #profile_main{
-    display:inline-block;
-    font-size:20px;
-    margin: 25px;
-    height: 20px;
-    padding:10px;
-  }
-  
-  .sub_title_list{
-    text-align:center;
-    margin-top: 30px;
-  }
-
-  ul{
-    list-style-type:none;
-    padding-left:50px;
-    margin:10px;
-  }
-  
-  .list{
-    display:inline-block;
-    text-align:left;
-  }
-  
-  ol{
-    list-style:decimal;
-    padding-left:80px;
-    margin:10px;
-  }
->>>>>>> 9a0246c98245cc4f4af299bd86d9f44cf582b5c9
