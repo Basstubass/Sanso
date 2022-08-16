@@ -44,6 +44,14 @@ body{
     padding-left: 3%;
     font-size: 18px;
 }
+.header-menu ul li a{
+    text-decoration: none;
+    color : inherit;
+
+}
+.header-menu ul li a:hover {
+    color: rgb(158, 158, 158);
+  }
 
 
 /* //////////////////////////////////// */
@@ -63,7 +71,7 @@ body{
 }
 
 .profile{
-    background-color: antiquewhite;
+    background-color: rgb(187, 187, 187);
     height: 334px;
     width: 750px;
     margin-top: 8%;
@@ -124,7 +132,7 @@ body{
 .whats_pick{
     width: 1050px;
     height: 700px;
-    background-color: antiquewhite;
+    background-color: rgb(255, 255, 255);
     margin-top: 2%;
 }
 
@@ -160,9 +168,16 @@ input[type="submit"]{
     width: 450px;
     margin-top: 3%;
     border: solid;
-    border-color: #000000;
+    border-color: #0000007b;
   }
-
+  .News_box{
+      margin-top: 5%;
+      margin-left: 6%;
+  }
+  .News_box p{
+    text-align: left;
+    margin: 0;
+  }
   .topics{
     position: absolute;
     top: 10%;
@@ -173,5 +188,13 @@ input[type="submit"]{
     width: 450px;
     margin-top: 3%;
     border: solid;
-    border-color: #000000;
+    border-color: #0000007b;
+  }
+  .topics_box{
+    margin-top: 5%;
+    margin-left: 6%;
+  }
+  .topics_box p{
+    text-align: left;
+    margin: 0;
   }
