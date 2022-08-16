@@ -198,3 +198,11 @@ input[type="submit"]{
     text-align: left;
     margin: 0;
   }
+
+
+  .footer{
+      margin-top: 5%;
+  }
+  .footer p{
+      text-align: center;
+  }
