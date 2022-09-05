@@ -1,0 +1,11 @@
+# pack-refs with: peeled fully-peeled sorted 
+3a6dad8a97e7dcdd7fe49f0f8dc2d28dd1a2193d refs/heads/clear_file
+159f293376a2886efb0efdf3490b6176ef02c304 refs/heads/dev
+d5b75240a8b2bb476ab01c0533d6e120cfe1503d refs/heads/feature_2
+b310d5f65df52f2cddccf3610045a0724685daa0 refs/heads/feature_design
+438713c1530baa5ae89cb873e7aea8ad9dd5fc0f refs/heads/feature_link
+aa384e679e627a9b8baa7d105142838b060ee514 refs/heads/feature_menber
+c778a5a041a6cd70753e026441b3287828673570 refs/heads/feature_patent
+0c2d2243fabc0029b2fe4d6440082bcc4c5bb272 refs/heads/feature_profile
+fa8c2f478c318336dcb217615c7a2ed58aef3c84 refs/heads/feature_research
+cae5dddf05de21acba6a65f568b3d27712c389f3 refs/heads/main
