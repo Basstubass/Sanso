@@ -133,33 +133,44 @@
             //     console.log(`追加できませんでした(${error})`);
             // });
 
-            var tmp_doc;
+            // var tmp_doc;
             // var array = [];
             var docRef = db.collection("news").get().then((query)=>{
                 var buff = [];
+                var buff_for=[];
+                var i=0;
                 query.forEach((doc)=>{
                     var data = doc.data();
                     buff.push([doc.id, data.date, data.title, data.text]);
-                    // console.log(doc.id);
-
+                    console.log(doc.id);
+                    buff_for[i]=doc.id;
+                    i=i+1;
                 });
                 // console.log(buff);
                 // console.log(buff[0]);
+                console.log(buff_for);
+                console.log(buff_for[0]);
+                console.log(buff_for[1]);
+                let whats_news = document.getElementById('.News_box');
+                // whats_news.innerHTML = `<p>${buff_for[0]}</p>`
+                let sample = whats_news.appendChild(buff_for[0]);
+                    // <p>${buff_for[1]}</p>
+                    // <p>${buff_for[2]}</p>
+                    // <p>${buff_for[3]}</p>
+                    // <p>${buff_for[4]}</p>`
 
-                // htmlに入れるのは配列に一旦保存してからfor文で回した方がええかも←<却下>
-                // buff_preserve=[];
+
 
                 // TODO
-                buff.forEach((buff_reseive)=>{
-                    // idだけ取り出せるか→いけた〜
-                    var Newsbox = document.getElementById('News_box');
-                    let whats_news = document.querySelector('.News_area');
-                    console.log(buff_reseive[0]);
-                    // ここがうまくいかねえ↓
-                    whats_news.insertBefore(buff_reseive[0], Newsbox.firstChild);
-                    // whats_news.innerHTML = `<p>${buff_reseive[0]}</p><a>${buff_reseive[2]}</p></a>`
-
-                });
+                // buff.forEach((buff_reseive)=>{
+                // //     // idだけ取り出せるか→いけた〜
+                //     // var Newsbox = document.getElementById('News_box');
+                //     let whats_news = document.querySelector('.News_area');
+                //     console.log(buff_reseive[0]);
+                // //     // ここがうまくいかねえ↓
+                // //     // whats_news.insertBefore(buff_reseive[0], Newsbox.firstChild);
+                //     whats_news.innerHTML = `<p>${buff_reseive[0]}</p><a>${buff_reseive[2]}</a>`
+                // });
 
                 // for文じゃなくてforEachメソッドで書いた方がいけるかもしれん.
                 // for (let index = 0; index < 3; index++){
@@ -170,6 +181,7 @@
             .catch((error)=>{
                 console.log("データの取得に失敗しました。");
             });
+            // forEachでなくfor文でぶん回します↑
 
             // console.log(docRef);
             // docRef.get().then((doc)=>{
