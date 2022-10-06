@@ -75,6 +75,9 @@
                 <div class="whats_news">
                     <a href="#"><input type="submit" value="What's News"></a>
                     <div class="News_area">
+                        <div id="News_box">
+
+                        </div>
                         <!-- Firebaseからデータを取得するフィールド -->
                     </div>
                     <!-- Firebaseからデータを取得するフィールド -->
@@ -106,13 +109,105 @@
             <p>Hajime Kawanami's Homepage e-mail:h-kawanami(@)aist.go.jp</p>
         </div>
 
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+        <script src="./js/config.js"></script>
+        
+
         <script>
+            var db = firebase.firestore();
+
             //ニュース
             //要素の配下に更新していけるようにしたい。
-            for (let index = 0; index < 10; index++){
-                let whats_news = document.querySelector('.News_area');
-                whats_news.innerHTML = '<div class="News_box"><p>2001.1.30</p><a><p>news story</p></a></div>'
-            }
+
+            // db.collection("news").add({
+            //     title:"今日のタイトル",
+            //     text:"なににしよっかな",
+            //     editer:"admin",
+            //     date:Date.now()
+            // })
+            // .then((doc)=>{
+            //     console.log(`追加に成功しました（${doc.id}）`);
+            // })
+            // .then((error)=>{
+            //     console.log(`追加できませんでした(${error})`);
+            // });
+
+            var tmp_doc;
+            // var array = [];
+            var docRef = db.collection("news").get().then((query)=>{
+                var buff = [];
+                query.forEach((doc)=>{
+                    var data = doc.data();
+                    buff.push([doc.id, data.date, data.title, data.text]);
+                    // console.log(doc.id);
+
+                });
+                // console.log(buff);
+                // console.log(buff[0]);
+
+                // htmlに入れるのは配列に一旦保存してからfor文で回した方がええかも←<却下>
+                // buff_preserve=[];
+
+                // TODO
+                buff.forEach((buff_reseive)=>{
+                    // idだけ取り出せるか→いけた〜
+                    var Newsbox = document.getElementById('News_box');
+                    let whats_news = document.querySelector('.News_area');
+                    console.log(buff_reseive[0]);
+                    // ここがうまくいかねえ↓
+                    whats_news.insertBefore(buff_reseive[0], Newsbox.firstChild);
+                    // whats_news.innerHTML = `<p>${buff_reseive[0]}</p><a>${buff_reseive[2]}</p></a>`
+
+                });
+
+                // for文じゃなくてforEachメソッドで書いた方がいけるかもしれん.
+                // for (let index = 0; index < 3; index++){
+                //         let whats_news = document.querySelector('.News_area');
+                //         whats_news.innerHTML = `<div class="News_box"><p>${buff[index][0]}</p><a>${buff[0][index]}</p></a></div>`
+                //     }
+            })
+            .catch((error)=>{
+                console.log("データの取得に失敗しました。");
+            });
+
+            // console.log(docRef);
+            // docRef.get().then((doc)=>{
+            //     if(doc.exists){
+            //         tmp_doc=doc.data();
+            //         console.log(doc.data());
+            //         console.log(doc.id);
+            //         console.log(tmp_doc.title);
+            //         console.log(tmp_doc.text);
+
+            //         array.push([doc.id, tmp_doc.title, tmp_doc.text]);
+                    
+            //         console.log(tmp_doc);
+            //         console.log(array[0][2]);
+
+            //         // この関数の中でなら表示される
+            //         for (let index = 0; index < 10; index++){
+            //             let whats_news = document.querySelector('.News_area');
+            //             whats_news.innerHTML = `<div class="News_box"><p>${tmp_doc['title']}</p><a>${tmp_doc['text']}</p></a></div>`
+            //         }
+            //     }
+            //     else{
+            //         console.log("404");
+            //     }
+            // })
+            // .catch((error)=>{
+            //     console.log(`データを取得できませんでした(${error})`);
+            // });
+            // console.log(tmp_doc);
+            // console.log(tmp_doc.title);
+
+
+
+
+            // for (let index = 0; index < 10; index++){
+            //     let whats_news = document.querySelector('.News_area');
+            //     whats_news.innerHTML = `<div class="News_box"><p>${tmp_doc}</p><a><p>news story</p></a></div>`
+            // }
             
             //トピック
             let topics = document.querySelector('.Topic_area');
