@@ -12,7 +12,6 @@ function App(){
   return(
     <>
     <BrowserRouter>
-    <div className="App">
       <Routes>
           <Route path="/" element={<Home />} />
           <Route path="Project" element={<Page1 />} />
@@ -20,7 +19,6 @@ function App(){
           <Route path="News" element={<Page3 />} />
           <Route path="Other" element={<Page4/>}/>
       </Routes>
-    </div>
     </BrowserRouter>
     </>
   );

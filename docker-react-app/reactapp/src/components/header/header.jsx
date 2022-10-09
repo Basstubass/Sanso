@@ -6,7 +6,7 @@ export const Header=()=>{
     return (
       <>
         <header>
-          <div class="header">
+          <div className='header'>
             <img src={header_image} alt="Logo"></img>
           <BrowserRouter>
             <ul>
