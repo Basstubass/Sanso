@@ -1,0 +1,36 @@
+#research_main{
+  font-size: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.investigation{
+  display:flex;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+}
+
+.investigation .investigation_aria{
+  margin: 0 0 0 20px;
+  padding: 0;
+}
+
+.investigation .title{
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  font-size: 18px;
+}
+.investigation .text{
+  margin: 10px 0 0;
+  padding: 0;
+}
+
+.investigation .projects_img{
+  width: 400px;
+  height: 150px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
