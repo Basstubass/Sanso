@@ -28,7 +28,6 @@ export const Home=()=>{
             {/* スクロールアニメーション */}
             <div class="scrolldown4"><span>Scroll</span></div>
             <div id="container">
-            <p>このエリアがスクロールすると上にかぶさります</p> 
             </div> 
             {/* スクロールアニメーション */}
 
