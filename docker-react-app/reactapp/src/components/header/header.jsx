@@ -1,4 +1,3 @@
-import {Link, BrowserRouter} from "react-router-dom";
 import header_image from "./img/aist_icon2.png";
 import './header.css';
 
@@ -8,25 +7,24 @@ export const Header=()=>{
         <header>
           <div className='header'>
             <img src={header_image} alt="Logo"></img>
-          <BrowserRouter>
             <ul>
               <li>
-                <Link to="/"> Home </Link>
+                <a href="/"> Home </a>
               </li>
               <li>
-                <Link to="/project"> Projects </Link>
+                <a href="/project"> Projects </a>
               </li>
               <li>
-                <Link to="/members"> Members </Link>
+                <a href="/members"> Members </a>
               </li>
               <li>
-                <Link to="/News"> News </Link>
+                <a href="/News"> News </a>
               </li>
               <li>
-                <Link to="/Other"> Other </Link>
+                <a href="/Other"> Other </a>
               </li>
             </ul>
-            </BrowserRouter>
+
 
           </div>
         </header>
