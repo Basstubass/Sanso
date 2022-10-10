@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Lato:ital,wght@1,300&family=Lobster&family=PT+Serif:ital@1&family=Quattrocento:wght@400;700&display=swap');
+
+
 .home_animation_aria{
     height: 500px;
     position:relative;
@@ -14,3 +17,95 @@
     top: 48%;
     left: 60%;
 }
+.profile_aria{
+    margin-top: 5%;
+    position: relative;
+    height: 450px;
+}
+.profile{
+    display: inline-block;
+    vertical-align: top;
+}
+.profile_textcontents{
+    margin-left: 23%;
+    text-align: right;
+    /* margin-right: 7%; */
+
+}
+.profile_textcontents h1{
+    margin-top: 0;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 9px;
+
+}
+.profile_textcontents h2{
+    text-align: right;
+    letter-spacing: 9px;
+
+    
+}
+.profile_img{
+    margin-left: 10%;
+
+}
+.profile_img img{
+    width: 340px;
+    
+}
+
+
+/* スクロール */
+.scrolldown4{
+  position:absolute;
+  top: 0;
+  left:42%;
+    /*矢印の動き1秒かけて永遠にループ*/
+  animation: arrowmove 1s ease-in-out infinite;
+}
+@keyframes arrowmove{
+    0%{bottom:1%;}
+    50%{bottom:3%;}
+   100%{bottom:1%;}
+}
+
+/*Scrollテキストの描写*/
+.scrolldown4 span{
+    /*描画位置*/
+  position: absolute;
+  left:-20px;
+  bottom:10px;
+    /*テキストの形状*/
+  color: rgb(0, 0, 0);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  /*縦書き設定*/
+  -ms-writing-mode: tb-rl;
+    -webkit-writing-mode: vertical-rl;
+    writing-mode: vertical-rl;
+}
+/* 矢印の描写 */
+.scrolldown4:before {
+    content: "";
+    /*描画位置*/
+    position: absolute;
+    bottom: 0;
+    right: -6px;
+    /*矢印の形状*/
+    width: 2px;
+    height: 23px;
+    background: rgb(0, 0, 0);
+    transform: skewX(-31deg);
+}
+
+.scrolldown4:after{
+    content:"";
+      /*描画位置*/
+    position: absolute;
+    bottom:0;
+    right:0;
+      /*矢印の形状*/
+    width: 2px;
+    height: 55px;
+    background:black;
+  }
+
