@@ -1,0 +1,16 @@
+.home_animation_aria{
+    height: 500px;
+    position:relative;
+}
+.home_animation_aria h1{
+    position: absolute;
+    font-size: 60px;
+    top: 28%;
+    left: 12%;
+}
+.home_animation_aria h2{
+    position: absolute;
+    font-size: 35px;
+    top: 48%;
+    left: 60%;
+}

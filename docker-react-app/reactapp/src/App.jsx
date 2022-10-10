@@ -1,30 +1,26 @@
-import {BrowserRouter,Link, Route, Routes} from "react-router-dom";
+import {BrowserRouter,Route, Routes} from "react-router-dom";
 
-import {Home} from "./components/Home";
-import {Page1} from "./components/Page1";
-import {Page2} from "./components/Page2";
-import {Page3} from "./components/Page3";
+import {Home} from "./components/Home/Home";
+import {Page1} from "./components/Project/Page1";
+import {Page2} from "./components/Members/Page2";
+import {Page3} from "./components/News/Page3";
+import {Page4} from "./components/Other/Page4";
+
+
 
 function App(){
   return(
+    <>
     <BrowserRouter>
-      <div className="App">
-        <Link to="/">Home</Link>
-        <br />
-        <Link to="/page1">Page1</Link>
-        <br />
-        <Link to="/page2">Page2</Link>
-        <br />
-        <Link to="/page3">Page3</Link>
-        <br />
-        <Routes>
-        <Route  path="/" element={<Home />}/>
-        <Route  path="/page1" element={ <Page1 />}/>
-        <Route  path="/page2" element={<Page2 />}/> 
-        <Route  path="/page3" element={<Page3 />}/> 
-        </Routes>
-      </div>
+      <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="Project" element={<Page1 />} />
+          <Route path="Members" element={<Page2 />} />
+          <Route path="News" element={<Page3 />} />
+          <Route path="Other" element={<Page4/>}/>
+      </Routes>
     </BrowserRouter>
+    </>
   );
 }
 
