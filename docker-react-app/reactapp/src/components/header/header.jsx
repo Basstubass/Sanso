@@ -6,7 +6,9 @@ export const Header=()=>{
       <>
         <header>
           <div className='header'>
-            <img src={header_image} alt="Logo"></img>
+            <a href="/">
+              <img src={header_image} alt="Logo"></img>
+            </a>
             <ul>
               <li>
                 <a href="/"> Home </a>
@@ -24,8 +26,6 @@ export const Header=()=>{
                 <a href="/Other"> Other </a>
               </li>
             </ul>
-
-
           </div>
         </header>
       </>

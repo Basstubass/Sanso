@@ -7,7 +7,6 @@ import {Page3} from "./components/News/Page3";
 import {Page4} from "./components/Other/Page4";
 
 
-
 function App(){
   return(
     <>
