@@ -39,7 +39,6 @@ export const Home=()=>{
           {/* アニメーションは後で付与 */}
           <div className='news'>
             <hr width="80%"></hr>
-
             <div className='news_aria news_text'>
               <h1>News</h1>
               <p>お知らせ</p>
@@ -70,13 +69,12 @@ export const Home=()=>{
                 <p>2001/01/30</p>
                 <p>whats news enable hello world hello world</p>
                 <hr width="60%"></hr>
-              </div>
-              
+              </div> 
             </div>
             <div className='more_aria'>
               <a href='/news'>
                 <button className='aria_button'>more</button>
-                <i className="fas fa-angle-right aria_button"></i>
+                <i className='fas fa-angle-right aria_button'></i>
               </a>
             </div>
           </div>
@@ -88,12 +86,12 @@ export const Home=()=>{
               <div className='Projects_img_aria img_aria'>
                 <img src={Pasted_img} alt="sience_img"/>
                 <h1>List of Projects</h1>
-                <i className="far fa-arrow-alt-circle-right"></i>
+                <i className='far fa-arrow-alt-circle-right'></i>
               </div>
               <div className='Member_img_aria img_aria'>
                 <img src={Pasted_img} alt="sience_img"/>
                 <h1>List of Member</h1>
-                <i className="far fa-arrow-alt-circle-right"></i>
+                <i className='far fa-arrow-alt-circle-right'></i>
               </div>
             </div>
           </div>
@@ -108,21 +106,21 @@ export const Home=()=>{
               <ul className='other_text'>
               <a href='/'>
                 <li>Dissertation</li>
-                <i class="fas fa-angle-right"></i>
+                <i className='fas fa-angle-right'></i>
               </a>
               <a href='/'>
                 <li>Books</li>
-                <i class="fas fa-angle-right"></i>
+                <i className='fas fa-angle-right'></i>
               </a>
               </ul>
               <ul className='other_text'>
                 <a href='/'>
                   <li>patent</li>
-                  <i class="fas fa-angle-right"></i>
+                  <i className='fas fa-angle-right'></i>
                 </a>
                 <a href='/'>
                   <li>Information</li>
-                  <i class="fas fa-angle-right"></i>
+                  <i className='fas fa-angle-right'></i>
                 </a>
               </ul>
             </div>
