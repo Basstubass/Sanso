@@ -2,10 +2,6 @@
 import './home.css';
 import home_image from "./img/my_photo.jpg";
 import Pasted_img from "./img/Pasted Graphic.jpg";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faChevron } from '@fortawesome/free-brands-svg-icons';
-
-
 
 export const Home=()=>{
   return (
@@ -99,33 +95,34 @@ export const Home=()=>{
           {/* もう少し変えたい */}
           <div className='other_aria'>
           <hr width="80%"></hr>
-          <div className='other_contents'>
-            <div className='other_text_contents'>
-              <h1>Other</h1>
-              <p>その他</p>
-              <ul className='other_text'>
-              <a href='/'>
-                <li>Dissertation</li>
-                <i className='fas fa-angle-right'></i>
-              </a>
-              <a href='/'>
-                <li>Books</li>
-                <i className='fas fa-angle-right'></i>
-              </a>
-              </ul>
-              <ul className='other_text'>
+            <div className='other_contents'>
+              <div className='other_text_contents'>
+                <h1>Other</h1>
+                <p>その他</p>
+                <ul className='other_text'>
                 <a href='/'>
-                  <li>patent</li>
+                  <li>Dissertation</li>
                   <i className='fas fa-angle-right'></i>
                 </a>
                 <a href='/'>
-                  <li>Information</li>
+                  <li>Books</li>
                   <i className='fas fa-angle-right'></i>
                 </a>
-              </ul>
+                </ul>
+                <ul className='other_text'>
+                  <a href='/'>
+                    <li>patent</li>
+                    <i className='fas fa-angle-right'></i>
+                  </a>
+                  <a href='/'>
+                    <li>Information</li>
+                    <i className='fas fa-angle-right'></i>
+                  </a>
+                </ul>
+              </div>
             </div>
           </div>
-          </div>
+
         </div>
       </main>
     </>
