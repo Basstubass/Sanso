@@ -5,9 +5,6 @@
     margin-bottom: 5%;
 }
 
-
-
-
 .head-border {
     display: flex;
     align-items: center;
@@ -73,7 +70,7 @@
 .member_profile_aria h3{
     position: absolute;
     top :50%;
-    left: 15%;
+    left: 18%;
 }
 .text_aria{
     box-sizing:border-box;
@@ -84,5 +81,7 @@
     inline-size: 250px; 
     /* overflow: hidden; */
     overflow-wrap: break-word;
-
+}
+.members_aria{
+    margin-top: 10%;
 }
