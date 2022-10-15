@@ -2,8 +2,17 @@
 import './home.css';
 import home_image from "./img/my_photo.jpg";
 import Pasted_img from "./img/Pasted Graphic.jpg";
+import member_img from "./img/Pasted Graphic 2.jpg";
+import React, { useState } from 'react';
+
 
 export const Home=()=>{
+
+  const [val, setVal] = React.useState('news');
+  // const handleChange = e => setVal(e.target.value);
+  const classToggle = () => {
+      setVal(!val)
+  }
   return (
     <>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"></link>
@@ -40,17 +49,23 @@ export const Home=()=>{
               <p>お知らせ</p>
             </div>
             <div className='radiobutton news_aria'>
-              <input id="radio1"  name="hoge" type="radio" value="ラジオボタン1"/>
-              <label for="radio1">News</label>
+              <label for="radio1">
+                <input id="radio1"  name="hoge" type="radio" value="news" defaultChecked 
+                onChange={classToggle}/>
+                News
+              </label>
             </div>
             <div className='radiobutton news_aria'>
-              <input id="radio1"  name="hoge" type="radio" value="ラジオボタン1"/>
-              <label for="radio1">Topics</label>
+              <label for="radio1">
+                <input id="radio1"  name="hoge" type="radio" value="topics"
+                onChange={classToggle}/>
+                Topics
+              </label>
             </div>
             
             {/* ニュースとトピックはボタンにて制御 */}
             {/* データベースより取得、news_textcontentsを生成 */}
-            <div className='news_topics_aria'>
+            <div className={val ? "news_topics_aria" : "hidden"}>
               <div className='news_textcontents'>
                 <p>2001/01/30</p>
                 <p>whats news enable hello world hello world</p>
@@ -67,6 +82,15 @@ export const Home=()=>{
                 <hr width="60%"></hr>
               </div> 
             </div>
+
+            <div className={val ? "hidden" : "news_topics_aria"}>
+              <div className='news_textcontents'>
+                <p>2001/01/30</p>
+                <p>これはトピックの時に出現します。</p>
+                <hr width="60%"></hr>
+              </div>
+            </div>
+
             <div className='more_aria'>
               <a href='/news'>
                 <button className='aria_button'>more</button>
@@ -85,9 +109,9 @@ export const Home=()=>{
                 <i className='far fa-arrow-alt-circle-right'></i>
               </div>
               <div className='Member_img_aria img_aria'>
-                <img src={Pasted_img} alt="sience_img"/>
-                <h1>List of Member</h1>
-                <i className='far fa-arrow-alt-circle-right'></i>
+                <img src={member_img} alt="sience_img"/>
+                <h1 style={{color: 'white'}}>List of Member</h1>
+                <i style={{color: 'white'}} className='far fa-arrow-alt-circle-right'></i>
               </div>
             </div>
           </div>
@@ -100,21 +124,21 @@ export const Home=()=>{
                 <h1>Other</h1>
                 <p>その他</p>
                 <ul className='other_text'>
-                <a href='/'>
+                <a href='/dissertation'>
                   <li>Dissertation</li>
                   <i className='fas fa-angle-right'></i>
                 </a>
-                <a href='/'>
+                <a href='/books'>
                   <li>Books</li>
                   <i className='fas fa-angle-right'></i>
                 </a>
                 </ul>
                 <ul className='other_text'>
-                  <a href='/'>
-                    <li>patent</li>
+                  <a href='/patent'>
+                    <li>Patent</li>
                     <i className='fas fa-angle-right'></i>
                   </a>
-                  <a href='/'>
+                  <a href='/infomation'>
                     <li>Information</li>
                     <i className='fas fa-angle-right'></i>
                   </a>

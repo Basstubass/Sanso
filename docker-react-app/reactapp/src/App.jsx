@@ -5,6 +5,12 @@ import {Page1} from "./components/Project/Page1";
 import {Page2} from "./components/Members/Page2";
 import {Page3} from "./components/News/Page3";
 import {Page4} from "./components/Other/Page4";
+import {Dissertation} from "./components/Dissertation/dissertation";
+import {Books} from "./components/Books/books";
+import {Patent} from "./components/Patent/patent";
+import {Infomation} from "./components/Infomation/infomation";
+
+
 
 
 function App(){
@@ -17,6 +23,13 @@ function App(){
           <Route path="Members" element={<Page2 />} />
           <Route path="News" element={<Page3 />} />
           <Route path="Other" element={<Page4/>}/>
+          <Route path="Dissertation" element={<Dissertation/>}/>
+          <Route path="Books" element={<Books/>}/>
+          <Route path="Patent" element={<Patent/>}/>
+          <Route path="Infomation" element={<Infomation/>}/>
+
+
+
       </Routes>
     </BrowserRouter>
     </>

@@ -1,0 +1,12 @@
+.news_textcontents{
+    /* width: 80%; */
+}
+.news_textcontents h2{
+    margin-left: 5%;
+    font-size: 20px;
+    font-weight: bold;
+}
+.news_textcontents p{
+    overflow-wrap: break-word;
+    width: 60%;
+}
