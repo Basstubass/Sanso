@@ -7,13 +7,42 @@
     font-size: 60px;
     top: 28%;
     left: 15%;
+
+    animation: right_SlideIn 1.6s;
 }
 .news_animation_aria h2{
     position: absolute;
     font-size: 35px;
     top: 48%;
     left: 18%;
+
+    animation: left_SlideIn 2s;
+
 }
+
+@keyframes right_SlideIn {
+    0% {
+        opacity: 0;/*初期状態では透明に*/
+        transform: translateX(-150px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+}
+@keyframes left_SlideIn {
+    0% {
+      opacity: 0;/*初期状態では透明に*/
+      transform: translateX(150px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
+
 .news{
     height: 100%;
     width: 100%;

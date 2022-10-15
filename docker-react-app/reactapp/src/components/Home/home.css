@@ -10,13 +10,40 @@
     font-size: 60px;
     top: 28%;
     left: 12%;
+
+    animation: right_SlideIn 1.6s;
 }
 .home_animation_aria h2{
     position: absolute;
     font-size: 35px;
     top: 48%;
     left: 60%;
+
+    animation: left_SlideIn 2s;
+
 }
+@keyframes right_SlideIn {
+    0% {
+        opacity: 0;/*初期状態では透明に*/
+        transform: translateX(-150px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+}
+@keyframes left_SlideIn {
+    0% {
+      opacity: 0;/*初期状態では透明に*/
+      transform: translateX(150px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
 .profile_aria{
     margin-top: 5%;
     position: relative;
@@ -129,7 +156,6 @@
 .news_aria{
     display: inline-block;
 }
-
 .radiobutton{
     font-size: 25px;
     font-family: 'Lato', sans-serif;

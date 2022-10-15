@@ -103,16 +103,20 @@ export const Home=()=>{
           <div className='list_aria'>
             <hr width="80%"></hr>
             <div className='list_img'>
-              <div className='Projects_img_aria img_aria'>
-                <img src={Pasted_img} alt="sience_img"/>
-                <h1>List of Projects</h1>
-                <i className='far fa-arrow-alt-circle-right'></i>
-              </div>
-              <div className='Member_img_aria img_aria'>
-                <img src={member_img} alt="sience_img"/>
-                <h1 style={{color: 'white'}}>List of Member</h1>
-                <i style={{color: 'white'}} className='far fa-arrow-alt-circle-right'></i>
-              </div>
+              <a href='/projects'>
+                <div className='Projects_img_aria img_aria'>
+                  <img src={Pasted_img} alt="sience_img"/>
+                  <h1>List of Projects</h1>
+                  <i className='far fa-arrow-alt-circle-right'></i>
+                </div>
+              </a>
+              <a href='/members'>
+                <div className='Member_img_aria img_aria'>
+                  <img src={member_img} alt="sience_img"/>
+                  <h1 style={{color: 'white'}}>List of Member</h1>
+                  <i style={{color: 'white'}} className='far fa-arrow-alt-circle-right'></i>
+                </div>
+              </a>
             </div>
           </div>
 
