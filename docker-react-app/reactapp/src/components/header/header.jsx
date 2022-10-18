@@ -23,7 +23,7 @@ export const Header=()=>{
                 <a href="/News"> News </a>
               </li>
               <li>
-                <a href="/Other"> Other </a>
+                <a href="/Information"> Information</a>
               </li>
             </ul>
           </div>

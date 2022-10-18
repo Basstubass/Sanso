@@ -8,7 +8,7 @@ import {Page4} from "./components/Other/Page4";
 import {Dissertation} from "./components/Dissertation/dissertation";
 import {Books} from "./components/Books/books";
 import {Patent} from "./components/Patent/patent";
-import {Infomation} from "./components/Infomation/infomation";
+import {Information} from "./components/Information/information";
 
 
 
@@ -26,7 +26,7 @@ function App(){
           <Route path="Dissertation" element={<Dissertation/>}/>
           <Route path="Books" element={<Books/>}/>
           <Route path="Patent" element={<Patent/>}/>
-          <Route path="Infomation" element={<Infomation/>}/>
+          <Route path="Information" element={<Information/>}/>
 
 
 

@@ -45,41 +45,14 @@ export const Page3=()=>{
             <div className={val ? "news_topics_aria" : "hidden"}>
                {/* 更新するエリア */}
               <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
+              <a href='/news'>
+                  <p>2001/01/30</p>
+                  <p>whats news enable hello world hello world</p>
+                  <hr width="60%"></hr>
+                </a>
               </div>
                {/* 更新するエリア */}
-              <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
-              </div>
-              <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
-              </div> 
-              <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
-              </div> 
-              <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
-              </div> 
-              <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
-              </div> 
-              <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>whats news enable hello world hello world</p>
-                <hr width="60%"></hr>
-              </div> 
+              
             </div>
             
             <div className={val ? "hidden" : "news_topics_aria"}>
