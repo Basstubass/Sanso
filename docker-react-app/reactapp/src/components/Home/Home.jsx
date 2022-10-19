@@ -3,6 +3,7 @@ import './home.css';
 import home_image from "./img/my_photo.jpg";
 import Pasted_img from "./img/Pasted Graphic.jpg";
 import member_img from "./img/Pasted Graphic 2.jpg";
+// eslint-disable-next-line
 import React, { useState } from 'react';
 
 
