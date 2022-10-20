@@ -27,9 +27,6 @@ function App(){
           <Route path="Books" element={<Books/>}/>
           <Route path="Patent" element={<Patent/>}/>
           <Route path="Infomation" element={<Infomation/>}/>
-
-
-
       </Routes>
     </BrowserRouter>
     </>
