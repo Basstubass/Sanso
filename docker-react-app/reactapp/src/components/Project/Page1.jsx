@@ -22,8 +22,6 @@ export const Page1=()=>{
     
   },[]);
   
-
-  
   return (
       <main>
         <div className='main'>
@@ -40,8 +38,8 @@ export const Page1=()=>{
               </div>
           </div>
           {/* 更新エリア */}
-          {post.map((news) => (
-            <div className='project_contents'>
+          {post.map((news, index) => (
+            <div className='project_contents' key={index}>
             <div className='project_contents_text project_aria'>
               <h1>{news.title}</h1>
               <p>{news.title}</p>
