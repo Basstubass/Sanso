@@ -28,8 +28,6 @@ function App(){
           <Route path="Patent" element={<Patent/>}/>
           <Route path="Information" element={<Information/>}/>
 
-
-
       </Routes>
     </BrowserRouter>
     </>
