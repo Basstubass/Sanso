@@ -10,13 +10,40 @@
     font-size: 60px;
     top: 28%;
     left: 12%;
+
+    animation: right_SlideIn 1.6s;
 }
 .home_animation_aria h2{
     position: absolute;
     font-size: 35px;
     top: 48%;
     left: 60%;
+
+    animation: left_SlideIn 2s;
+
 }
+@keyframes right_SlideIn {
+    0% {
+        opacity: 0;/*初期状態では透明に*/
+        transform: translateX(-150px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+}
+@keyframes left_SlideIn {
+    0% {
+      opacity: 0;/*初期状態では透明に*/
+      transform: translateX(150px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+
 .profile_aria{
     margin-top: 5%;
     position: relative;
@@ -108,4 +135,212 @@
     height: 55px;
     background:black;
   }
+
+.news{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+    margin-top: 3%;
+    padding-bottom: 5%;
+    /* margin-top: 3%; */
+    /* transform: translate(0, 60px); */
+}
+.news hr{
+    height:0px;
+	border-style:solid;
+	border-width:0 0 1px 0;
+	padding:0 0 3% 0;
+}
+.news_aria{
+    display: inline-block;
+}
+.radiobutton{
+    font-size: 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    margin-left: 7%;
+    border-bottom: solid;
+}
+#radio1{
+    accent-color:black;
+    transform:scale(1.4);
+}
+#radio2{
+    accent-color:black;
+    transform:scale(1.4);
+}
+
+.news_text{
+    margin-left: 11%;
+    margin-top: 4%;
+}
+.news_text h1{
+    font-size: 50px;
+}
+
+.news_text h1,p{
+    font-family: 'Lato', sans-serif;
+    margin: 1px;
+}
+.news_topics_aria{
+    margin-top: 6%;
+}
+.news_textcontents{
+    margin-top: 3%;
+    margin-left: 25%;
+    /* margin-right: 40%; */
+}
+.news_textcontents p{
+    display: inline-block;
+    margin-left: 5%;
+    font-size: 15px;
+    font-weight: bold;
+}
+.news_topics_aria hr{
+	border-style:solid;
+	padding:0 0 1% 0;
+    margin-left: 4%;
+}
+
+.hidden{
+    display: none;
+}
+
+
+.more_aria button{
+    border: none;
+    outline: none;
+    background: transparent;
+}
+.aria_button{
+    vertical-align: top;
+    font-size: 20px;
+    cursor: pointer;
+}
+.more_aria{
+    margin-left: 68%;
+    margin-top: 3%;
+    font-size: 20px;
+}
+.more_aria i{
+    margin-top: 1%;
+}
+.more_aria a{
+    cursor: pointer;
+}
+.list_aria{
+    height: 100%;
+}
+.list_aria hr{
+    height:0px;
+	border-style:solid;
+	border-width:0 0 1px 0;
+	padding:0 0 3% 0;
+}
+
+/* image 3 */
+.list_img{
+    text-align: center;
+}
+.list_img img{
+    width: 400px;
+    margin-top: 4%;
+    margin-bottom: 8%;
+    background-color: rgba(0,0,0,0.5);
+    
+    
+}
+.img_aria{
+    display: inline-block;
+    margin-left: 10px;
+    position: relative;
+    margin-top: 5%;
+}
+.Projects_img_aria:hover{
+    opacity: 1;
+}
+.Member_img_aria:hover{
+    opacity: 1;
+}
+.Projects_img_aria{
+    opacity: 0.7;
+}
+.Member_img_aria{
+    opacity: 0.6;
+}
+.Projects_img_aria h1{
+    position: absolute;
+    top: 70%;
+    left: 15%;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+}
+.Member_img_aria h1{
+    position: absolute;
+    top: 70%;
+    left: 15%;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+
+}
+.Projects_img_aria i{
+    position: absolute;
+    top: 75%;
+    left: 82%;
+    font-size: 40px;
+}
+.Member_img_aria i{
+    position: absolute;
+    top: 75%;
+    left: 82%;
+    font-size: 40px;
+    font-weight: lighter;
+}
+
+/* .other_aria{
+    text-align: center;
+} */
+.other_aria hr{
+    height:0px;
+	border-style:solid;
+	border-width:0 0 1px 0;
+	padding:0 0 4% 0;
+    margin-bottom: 5%;
+}   
+
+.other_contents{
+    height: 400px;
+    width: 80%;
+    background-color: #eeee;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+.other_text_contents h1, p{
+    font-family: 'Lato', sans-serif;
+    margin: 1px;
+}
+.other_text_contents h1{
+    font-family: 'Lato', sans-serif;
+    font-size: 45px;
+}
+.other_text_contents{
+    margin-left: 7%;
+    padding-top: 5%;
+    letter-spacing: 2px;
+    font-family: 'Lato', sans-serif;
+}
+.other_text{
+    margin-top: 5%;
+}
+.other_text li{
+    margin-right: 1%;
+    font-size: 25px;
+    margin-left: 15%;
+    border-bottom: 1px solid black;
+}
+.other_text i{
+    font-size: 20px;
+}
 
