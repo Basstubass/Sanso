@@ -4,7 +4,7 @@ import React from "react";
 // import {useCollection} from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
-import db from "../../firebase";
+import { db } from "../../firebase";
 
 export const Page1=()=>{
 
@@ -21,7 +21,7 @@ export const Page1=()=>{
       });
     
   },[]);
-  
+
   return (
       <main>
         <div className='main'>
