@@ -50,7 +50,8 @@
     margin-top: 3%;
 }
 .member_profile_img{
-    margin-left: 9%;
+    margin-left: 20%;
+    /* margin-left: 9%; */
 }
 .member_profile_img img{
     width: 85%;
