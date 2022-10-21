@@ -1,6 +1,9 @@
 import './news.css';
 // eslint-disable-next-line
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line
+import { collection, doc, getDocs, onSnapshot} from "firebase/firestore";
+import db from "../../firebase";
 
 
 export const Page3=()=>{
@@ -10,6 +13,20 @@ export const Page3=()=>{
   const classToggle = () => {
       setVal(!val)
   }
+
+  const [post, setPosts] = useState([]);
+  useEffect(() => {
+    //データ取得
+    const postData = collection(db, "news")
+        getDocs(postData).then((snapShot) => {
+        setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
+      });
+
+      onSnapshot(postData, (post) => {
+        setPosts(post.doc.map((doc) => ({...doc.data() })));
+      });
+    
+  },[]);
 
   return (
     <main>
@@ -45,25 +62,28 @@ export const Page3=()=>{
             {/* データベースより取得、news_textcontentsを生成 */}
             <div className={val ? "news_topics_aria" : "hidden"}>
                {/* 更新するエリア */}
+               {post.map((news)=>(
               <div className='news_textcontents'>
               <a href='/news'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
+                  <p>{news.editer}</p>
+                  <p>{news.text}</p>
                   <hr width="60%"></hr>
                 </a>
               </div>
+              ))}
                {/* 更新するエリア */}
               
             </div>
-            
+            {post.map((news)=>(
             <div className={val ? "hidden" : "news_topics_aria"}>
               <div className='news_textcontents'>
-                <p>2001/01/30</p>
-                <p>これはトピックの時に出現します。</p>
+                <p>{news.title}</p>
+                <p>{news.text}</p>
                 <hr width="60%"></hr>
               </div>
             </div>
-            
+            ))}
+
           </div>
         
 
