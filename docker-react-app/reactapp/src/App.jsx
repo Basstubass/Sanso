@@ -1,8 +1,8 @@
 import {BrowserRouter,Route, Routes} from "react-router-dom";
 
 import {Home} from "./components/Home/Home";
-import {Project} from "./components/Project/Project";
-import {Members} from "./components/Members/Members";
+import {Page1} from "./components/Project/Page1";
+import {Page2} from "./components/Members/Page2";
 import {Page3} from "./components/News/Page3";
 import {Page4} from "./components/Other/Page4";
 import {Dissertation} from "./components/Dissertation/dissertation";
@@ -19,14 +19,14 @@ function App(){
     <BrowserRouter>
       <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="Project" element={<Project />} />
-          <Route path="Members" element={<Members />} />
-          <Route path="News" element={<Page3 />} />
-          <Route path="Other" element={<Page4/>}/>
-          <Route path="Dissertation" element={<Dissertation/>}/>
-          <Route path="Books" element={<Books/>}/>
-          <Route path="Patent" element={<Patent/>}/>
-          <Route path="Information" element={<Information/>}/>
+          <Route path="project" element={<Page1 />} />
+          <Route path="members" element={<Page2 />} />
+          <Route path="news" element={<Page3 />} />
+          <Route path="other" element={<Page4/>}/>
+          <Route path="dissertation" element={<Dissertation/>}/>
+          <Route path="books" element={<Books/>}/>
+          <Route path="patent" element={<Patent/>}/>
+          <Route path="information" element={<Information/>}/>
 
       </Routes>
     </BrowserRouter>
