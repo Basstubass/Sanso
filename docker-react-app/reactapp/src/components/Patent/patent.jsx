@@ -1,6 +1,9 @@
 // eslint-disable-next-line
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './patent.css';
+import { collection, getDocs, onSnapshot} from "firebase/firestore";
+import { db } from "../../firebase";
+
 
 export const Patent=()=>{
     const [val, setVal] = React.useState('news');
@@ -8,6 +11,20 @@ export const Patent=()=>{
     const classToggle = () => {
         setVal(!val)
     }
+
+    const [post, setPosts] = useState([]);
+    useEffect(() => {
+      //データ取得
+      const postData = collection(db, "users")
+          getDocs(postData).then((snapShot) => {
+          setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
+        });
+  
+        onSnapshot(postData, (post) => {
+          setPosts(post.doc.map((doc) => ({...doc.data() })));
+        });
+      
+    },[]);
   
     return (
       <main>
@@ -43,44 +60,21 @@ export const Patent=()=>{
               {/* データベースより取得、news_textcontentsを生成 */}
               <div className={val ? "news_topics_aria" : "hidden"}>
                  {/* 更新するエリア */}
+                 {post.map((users)=>(
                 <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
+                  <p>{users.name}</p>
+                  <p>{users.food}</p>
                   <hr width="60%"></hr>
                 </div>
-                 {/* 更新するエリア */}
-                <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
-                  <hr width="60%"></hr>
-                </div>
-                <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
-                  <hr width="60%"></hr>
-                </div> 
-                <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
-                  <hr width="60%"></hr>
-                </div> 
-                <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
-                  <hr width="60%"></hr>
-                </div> 
-                <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
-                  <hr width="60%"></hr>
-                </div> 
+                ))}
                 <div className='news_textcontents'>
                   <p>2001/01/30</p>
                   <p>whats news enable hello world hello world</p>
                   <hr width="60%"></hr>
                 </div> 
               </div>
-              
+                {/* 更新するエリア */}
+
               <div className={val ? "hidden" : "news_topics_aria"}>
                 <div className='news_textcontents'>
                   <p>2001/01/30</p>

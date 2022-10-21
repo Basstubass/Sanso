@@ -1,8 +1,27 @@
 import './dissertation.css';
-
+// eslint-disable-next-line
+import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line
+import { collection, doc, getDocs, onSnapshot} from "firebase/firestore";
+import { db } from "../../firebase";
 
 
 export const Dissertation=()=>{
+
+
+  const [post, setPosts] = useState([]);
+  useEffect(() => {
+    //データ取得
+    const postData = collection(db, "dissertation")
+        getDocs(postData).then((snapShot) => {
+        setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
+      });
+
+      onSnapshot(postData, (post) => {
+        setPosts(post.doc.map((doc) => ({...doc.data() })));
+      });
+    
+  },[]);
     return (
       <main>
       <div className='main'>
@@ -24,7 +43,17 @@ export const Dissertation=()=>{
 
 
                {/* 更新するエリア */}
+               {post.map((value)=>(
+
               <div className='dissertation_textcontents'>
+                <h1>{value.title} </h1>
+                <p>{value.quote}</p>
+                <p className='diss_main'>{value.overview}</p>
+                <hr width="70%"></hr>
+              </div>
+              ))}
+               {/* 更新するエリア */}
+               <div className='dissertation_textcontents'>
                 <h1>Catalysis Science & Technology </h1>
                 <p>Vol.11, No.14 pp.4661-5016, 2021</p>
                 <p className='diss_main'>Maya Chatterjee, Abhijit Chatterjee, Mitsunori Kitta, Hajime Kawanami
@@ -32,7 +61,6 @@ export const Dissertation=()=>{
                    multi-carbon oxygenate using a physically mixed ruthenium-iridium catalyst</p>
                 <hr width="70%"></hr>
               </div>
-               {/* 更新するエリア */}
             </div>
           </div>
       </div>
