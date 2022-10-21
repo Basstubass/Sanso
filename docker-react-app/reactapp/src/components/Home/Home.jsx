@@ -115,7 +115,7 @@ export const Home=()=>{
           <div className='list_aria'>
             <hr width="80%"></hr>
             <div className='list_img'>
-              <a href='/projects'>
+              <a href='/project'>
                 <div className='Projects_img_aria img_aria'>
                   <img src={Pasted_img} alt="sience_img"/>
                   <h1>List of Projects</h1>
