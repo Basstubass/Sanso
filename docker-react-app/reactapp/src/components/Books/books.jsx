@@ -10,7 +10,7 @@ export const Books=()=>{
   const [post, setPosts] = useState([]);
   useEffect(() => {
     //データ取得
-    const postData = collection(db, "news")
+    const postData = collection(db, "books")
         getDocs(postData).then((snapShot) => {
         setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
@@ -41,11 +41,11 @@ export const Books=()=>{
               <div className="news_topics_aria">
                  {/* 更新するエリア */}
 
-                 {post.map((news)=>
+                 {post.map((books)=>
                 <div className='news_textcontents'>
-                  <h2>{news.editer}</h2>
-                  <p>{news.text}</p>
-                  <p>{news.title}</p>
+                  <h2>{books.author}</h2>
+                  <p>{books.title}</p>
+                  <p>{books.publication_info}</p>
                   <hr width="60%"></hr>
                 </div>
                 )}

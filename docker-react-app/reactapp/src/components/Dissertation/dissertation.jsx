@@ -12,7 +12,7 @@ export const Dissertation=()=>{
   const [post, setPosts] = useState([]);
   useEffect(() => {
     //データ取得
-    const postData = collection(db, "news")
+    const postData = collection(db, "dissertation")
         getDocs(postData).then((snapShot) => {
         setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
@@ -47,8 +47,8 @@ export const Dissertation=()=>{
 
               <div className='dissertation_textcontents'>
                 <h1>{value.title} </h1>
-                <p>{value.editer}</p>
-                <p className='diss_main'>{value.text}</p>
+                <p>{value.quote}</p>
+                <p className='diss_main'>{value.overview}</p>
                 <hr width="70%"></hr>
               </div>
               ))}
