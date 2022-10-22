@@ -11,10 +11,12 @@ import { db } from "../../firebase";
 
 export const Page4=()=>{
   // const user = auth.currentUser;
-  const [text, setText] = useState('')
+  const [users, setUsers] = useState('')
+  const [food, setFoods] = useState('')
+  // let users_data = [users, food]
+
   const [user] = useAuthState(auth)
   // console.log(auth.currentUser.displayName)
-  console.log(user)
 
 
   return (
@@ -29,13 +31,16 @@ export const Page4=()=>{
             <h1>{auth.currentUser.displayName}</h1>
           </div>
           <div className="post_aria">
-            <button onClick={handleonClickAddButton}>追加</button>
+            <button onClick={handleonClick_user_AddButton}>追加</button>
+
+            {/* ユーザーの追加 */}
             <div>
-            <input
-              value={text}
-              onChange={(event) => setText(event.target.value)}
-            />
-              <button onClick={() => handleonClickAddButton(text)}>値の確認</button>
+            <input value={users} onChange={(event) => setUsers(event.target.value)}/>
+            </div>
+            {/* フードの追加 */}
+            <div>
+            <input value={food} onChange={(event) => setFoods(event.target.value)}/>
+              <button onClick={() => handleonClick_user_AddButton(users,food)}>フードの追加</button>
             </div>
          
           </div>
@@ -83,10 +88,14 @@ function UserInfo(){
 }
 
 
-//投稿用の関数
-const handleonClickAddButton = async (text) => {
+
+////////////////投稿用の関数
+const handleonClick_user_AddButton = async (users, food) => {
+  console.log(users)
+
+
   await setDoc(doc(db, "users", "1"), {
-    food: text,
-    name: 'びろ'
+    food: users,
+    name: food
   });
 }
