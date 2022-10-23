@@ -67,7 +67,7 @@ export const Page2=()=>{
             </div>
             <h3>Comments</h3>
               <div className='members_comments' id="story" name="story"rows="5" cols="33">
-                <p>It was a dark and stormy night...wwwwwwwwwwwwwwwwwwwwwdsdasddssdfsdfsdfwfdfw sdfsadfsdfsdfsdfsdfsdfdf</p>
+                <p>{users.comments}</p>
               </div>
             <div className='member_profile_img profile'>
                 <img src={home_image} alt="" />

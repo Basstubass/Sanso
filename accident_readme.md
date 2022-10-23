@@ -4,12 +4,9 @@
  2,お問い合わせ画面の検討
  3,データベース
 
-
-
-
-
  3,データベース
   必要になる変数
   → NEWSの投稿
   →Topicsの投稿
   →membersの更新とコメントの追加
+  memmber,topics, News, Books, 論文,は画像の投稿

@@ -14,18 +14,26 @@ export const Page3=()=>{
       setVal(!val)
   }
 
-  const [post, setPosts] = useState([]);
+  const [news_post, setNewsposts] = useState([]);
+  const [topic_post, setTopicsposts] = useState([]);
+
   useEffect(() => {
     //データ取得
-    const postData = collection(db, "news")
-        getDocs(postData).then((snapShot) => {
-        setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
+    const news_postData = collection(db, "news")
+        getDocs(news_postData).then((snapShot) => {
+        setNewsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
-
-      onSnapshot(postData, (post) => {
-        setPosts(post.doc.map((doc) => ({...doc.data() })));
+      onSnapshot(news_postData, (news_post) => {
+      setNewsposts(news_post.doc.map((doc) => ({...doc.data() })));
       });
     
+    const topic_postData = collection(db, "topic")
+      getDocs(topic_postData).then((snapShot) => {
+        setTopicsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
+    });
+    onSnapshot(topic_postData, (topic_post) => {
+    setTopicsposts(topic_post.doc.map((doc) => ({...doc.data() })));
+    });
   },[]);
 
   return (
@@ -62,7 +70,7 @@ export const Page3=()=>{
             {/* データベースより取得、news_textcontentsを生成 */}
             <div className={val ? "news_topics_aria" : "hidden"}>
                {/* 更新するエリア */}
-               {post.map((news)=>(
+               {news_post.map((news)=>(
               <div className='news_textcontents'>
               <a href='/news'>
                   <p>{news.editer}</p>
@@ -74,11 +82,11 @@ export const Page3=()=>{
                {/* 更新するエリア */}
               
             </div>
-            {post.map((news)=>(
+            {topic_post.map((topic)=>(
             <div className={val ? "hidden" : "news_topics_aria"}>
               <div className='news_textcontents'>
-                <p>{news.title}</p>
-                <p>{news.text}</p>
+                <p>{topic.title}</p>
+                <p>{topic.text}</p>
                 <hr width="60%"></hr>
               </div>
             </div>
