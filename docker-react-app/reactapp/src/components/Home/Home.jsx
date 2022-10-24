@@ -29,16 +29,8 @@ export const Home=()=>{
       onSnapshot(news_postData, (news_post) => {
       setNewsposts(news_post.doc.map((doc) => ({...doc.data() })));
       });
-
-    // const news_postData = collection(db, "news")
-    //     getDocs(news_postData).then((snapShot) => {
-    //     setNewsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
-    //   });
-    //   onSnapshot(news_postData, (news_post) => {
-    //   setNewsposts(news_post.doc.map((doc) => ({...doc.data() })));
-    //   });
     
-    const topic_postData = collection(db, "topic")
+    const topic_postData = query( collection(db, "topic"), limit(5));
       getDocs(topic_postData).then((snapShot) => {
         setTopicsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
     });
