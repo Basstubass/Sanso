@@ -5,7 +5,7 @@ import Pasted_img from "./img/Pasted Graphic.jpg";
 import member_img from "./img/Pasted Graphic 2.jpg";
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, onSnapshot} from "firebase/firestore";
+import { collection, getDocs, onSnapshot, limit, query} from "firebase/firestore";
 import { db } from "../../firebase";
 
 export const Home=()=>{
@@ -22,7 +22,7 @@ export const Home=()=>{
   useEffect(() => {
     //データ取得
     const news_postData = collection(db, "news")
-        getDocs(news_postData).then((snapShot) => {
+        getDocs(query(news_postData, limit(5))).then((snapShot) => {
         setNewsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
       onSnapshot(news_postData, (news_post) => {
@@ -30,7 +30,7 @@ export const Home=()=>{
       });
     
     const topic_postData = collection(db, "topic")
-      getDocs(topic_postData).then((snapShot) => {
+      getDocs(query(topic_postData, limit(5))).then((snapShot) => {
         setTopicsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
     });
     onSnapshot(topic_postData, (topic_post) => {
@@ -112,6 +112,8 @@ export const Home=()=>{
             </div>
             {/* 更新するエリア */}
             {/* for文を用いて更新順5つを表示したいです */}
+
+
             {topic_post.map((topic)=>(
             <div className={val ? "hidden" : "news_topics_aria"}>
               <div className='news_textcontents'>
@@ -121,6 +123,10 @@ export const Home=()=>{
               </div>
             </div>
             ))}
+
+            {}
+
+
 
             <div className='more_aria'>
               <a href='/news'>
