@@ -4,8 +4,10 @@ import React, { useState, useRef } from 'react';
 // import { useEffect, useState } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Timestamp, collection, addDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+// eslint-disable-next-line
+import { Timestamp, collection, addDoc,} from "firebase/firestore";
+import {ref, uploadBytes}from "firebase/storage";
+import { db ,firestorage } from "../../firebase";
 
 export const Page4=()=>{
 
@@ -33,7 +35,27 @@ export const Page4=()=>{
   const [dissertation_quote, setDissertation_quote] = useState('')
   const [dissertation_title, setDissertation_title] = useState('')
 
+  // 画像追加関数の状態管理する処理
+  const [image, setImage] = useState([]);
 
+////////////////Storegeに保存する関数/////////////
+const handleChange = (e) =>{
+  setImage(e.target.files[0]);
+}
+const handleSubmit =(e)=>{
+  e.preventDefault();
+
+  console.log("imageが送信されました");
+}
+try{
+  const imageRef = ref(firestorage, image.name);
+
+  uploadBytes(imageRef, image).then(()=>{
+    console.log("Uploadに成功したで");
+  });
+} catch(error){
+  console.log(error);
+}
 
 
   //ログインhooks
@@ -138,6 +160,11 @@ export const Page4=()=>{
             </div>
             <button onClick={() => handleonClick_Dissertation_AddButton(dissertation_title, dissertation_overviews, dissertation_quote, dissertation_date, inputRef)}>Dissertation</button>
 
+            <h1>画像の追加</h1>
+            <form onSubmit={handleSubmit}>
+              <input type="file" onChange={handleChange} />
+              <button className="button">追加</button>
+            </form>
           </div>
 
 
@@ -232,4 +259,3 @@ const handleonClick_Dissertation_AddButton = async (dissertation_title, disserta
     date: dissertation_date
   });
 }
-//

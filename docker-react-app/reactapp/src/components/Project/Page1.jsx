@@ -4,7 +4,8 @@ import React from "react";
 // import {useCollection} from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
-import { db } from "../../firebase";
+import {getDownloadURL, ref} from "firebase/storage";
+import { db, firestorage } from "../../firebase";
 
 export const Page1=()=>{
 
@@ -22,6 +23,18 @@ export const Page1=()=>{
     
   },[]);
 
+  const[image, setImage]=useState([]);
+  const gsReference = ref(
+    firestorage,
+    "gs://sanso-kawanami-slab.appspot.com/AKIRA違い.jpeg",
+  );
+
+  getDownloadURL(gsReference)
+    .then((url) =>{
+      setImage(url)
+    })
+    .catch((error)=>console.log("Errorです。:"+error));
+
   return (
       <main>
         <div className='main'>
@@ -36,6 +49,7 @@ export const Page1=()=>{
                 <h1>Projects</h1>
                 <p>研究紹介</p>
               </div>
+              <img src={image} alt="" />
           </div>
           {/* 更新エリア */}
           {post.map((news, index) => (
