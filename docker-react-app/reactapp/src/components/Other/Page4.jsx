@@ -6,8 +6,35 @@ import React, { useState, useRef } from 'react';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { storage } from "../../firebase";
+import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export const Page4=()=>{
+
+  const [loading, setLoading] = useState(false);
+  const [isUploading, setUploaded] = useState(false);
+
+  // const [file_url, setFile_url] = useState(false);
+   
+  ///imgの投稿
+  const OnFileUploader = (e) => {
+    const file_name = e.target.files[0]
+    const storageRef = ref(storage, "image/" + file_name.name);
+    const uploadImage = uploadBytesResumable(storageRef, file_name);
+    uploadImage.on(
+      "state_changed",
+      (snapshot) => {
+        setLoading(true);
+      },
+      (err) => {
+        console.log(err);
+      },
+      () => {
+        setLoading(false);
+        setUploaded(true);
+      }
+    )
+  }
 
   const inputRef = useRef();
   // const user = auth.currentUser;
@@ -33,6 +60,8 @@ export const Page4=()=>{
   const [dissertation_quote, setDissertation_quote] = useState('')
   const [dissertation_title, setDissertation_title] = useState('')
 
+  //pantent
+  const [patent_date, setPatent_date] = useState('')
 
 
 
@@ -100,30 +129,29 @@ export const Page4=()=>{
             {/* タイトルの追加 */}
             <div>
               <p>タイトル</p>
-              <input ref={inputRef} value={publication_info} onChange={(event) => setPublication_info(event.target.value)}/>
+              <input ref={inputRef} value={books_title} onChange={(event) => setBooks_title(event.target.value)}/>
             </div>
             {/* テキストの追加 */}
             <div>
-              <p>本文</p>
-              <input ref={inputRef} value={books_title} onChange={(event) => setBooks_title(event.target.value)}/>
+              <p>出版社</p>
+              <input ref={inputRef} value={publication_info} onChange={(event) => setPublication_info(event.target.value)}/>
             </div>
             <div>
               <p>著者</p>
               <input ref={inputRef} value={author} onChange={(event) => setAuthor(event.target.value)}/>
             </div>
             <div>
-              <p>発行日？</p>
+              <p>ID</p>
               <input ref={inputRef} value={date} onChange={(event) => setDate(event.target.value)}/>
             </div>
             <button onClick={() => handleonClick_Books_AddButton(publication_info,books_title, author, date, inputRef)}>Books</button>
 
+
             <h1>Disserの追加</h1>
-            {/* タイトルの追加 */}
             <div>
               <p>タイトル</p>
               <input ref={inputRef} value={dissertation_title} onChange={(event) => setDissertation_title(event.target.value)}/>
             </div>
-            {/* テキストの追加 */}
             <div>
               <p>概要</p>
               <input ref={inputRef} value={dissertation_overviews} onChange={(event) => setDissertation_overviews(event.target.value)}/>
@@ -137,11 +165,41 @@ export const Page4=()=>{
               <input ref={inputRef} value={dissertation_date} onChange={(event) => setDissertation_date(event.target.value)}/>
             </div>
             <button onClick={() => handleonClick_Dissertation_AddButton(dissertation_title, dissertation_overviews, dissertation_quote, dissertation_date, inputRef)}>Dissertation</button>
-
+          
+            <h1>国内論文の追加</h1>
+            <div>
+              <p>国内特許データ</p>
+              <input ref={inputRef} value={patent_date} onChange={(event) => setPatent_date(event.target.value)}/>
+            </div>
+            <button onClick={() => handleonClick_Patent_AddButton(patent_date)}>Dissertation</button>
           </div>
 
+          <div className="image_aria">
+            <input className="imageUploader" multiple name="imageURL" type="file" accept=".png, .jpeg, .jpg" onChange={OnFileUploader}/>
+          </div>
+          <button>
+            ファイルの選択
+            <input className="imageUploader" multiple name="imageURL" type="file" accept=".png, .jpeg, .jpg" onChange={OnFileUploader}/>
+          </button>
 
-          
+          <div>
+            {loading ?(
+              <h2>アップロード中...</h2>
+             ) : (
+              <>
+               {isUploading ? (
+                <>
+                <h2>アップロード完了</h2>
+                </>
+                
+               ):(
+                <></>
+               )}
+            </>
+            )}
+            
+          </div>
+
 
           <SignOutbutton/>
         </>
@@ -213,7 +271,6 @@ const handleonClick_Topics_AddButton = async (tp_title, tp_text, inputRef) => {
     times: Timestamp.fromDate(new Date()),
   });
 }
-
 //ブックハンドル
 const handleonClick_Books_AddButton = async (publication_info, books_title, author, date, inputRef) => {
   await addDoc(collection(db, "books"), {
@@ -230,6 +287,12 @@ const handleonClick_Dissertation_AddButton = async (dissertation_title, disserta
     quote: dissertation_quote,
     overview: dissertation_overviews,
     date: dissertation_date
+  });
+}
+const handleonClick_Patent_AddButton = async (patent_date) => {
+  await addDoc(collection(db, "patent"), {
+    text: patent_date,
+    times:Timestamp.fromDate(new Date()),
   });
 }
 //

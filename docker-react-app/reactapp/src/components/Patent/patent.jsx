@@ -3,27 +3,25 @@ import React, { useState, useEffect } from 'react';
 import './patent.css';
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
 import { db } from "../../firebase";
+// import dayjs from 'dayjs';
 
 
 export const Patent=()=>{
-    const [val, setVal] = React.useState('news');
+    const [val, setVal] = React.useState('patent');
     // const handleChange = e => setVal(e.target.value);
     const classToggle = () => {
         setVal(!val)
     }
-
     const [post, setPosts] = useState([]);
     useEffect(() => {
       //データ取得
-      const postData = collection(db, "users")
+      const postData = collection(db, "patent")
           getDocs(postData).then((snapShot) => {
           setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
         });
-  
-        onSnapshot(postData, (post) => {
+          onSnapshot(postData, (post) => {
           setPosts(post.doc.map((doc) => ({...doc.data() })));
         });
-      
     },[]);
   
     return (
@@ -60,18 +58,13 @@ export const Patent=()=>{
               {/* データベースより取得、news_textcontentsを生成 */}
               <div className={val ? "news_topics_aria" : "hidden"}>
                  {/* 更新するエリア */}
-                 {post.map((users)=>(
+                 {post.map((patent)=>(
                 <div className='news_textcontents'>
-                  <p>{users.name}</p>
-                  <p>{users.food}</p>
+                  <p>{patent.text}</p>
+                  <p></p>
                   <hr width="60%"></hr>
                 </div>
                 ))}
-                <div className='news_textcontents'>
-                  <p>2001/01/30</p>
-                  <p>whats news enable hello world hello world</p>
-                  <hr width="60%"></hr>
-                </div> 
               </div>
                 {/* 更新するエリア */}
 
@@ -82,11 +75,7 @@ export const Patent=()=>{
                   <hr width="60%"></hr>
                 </div>
               </div>
-              
             </div>
-          
-  
-  
   
         </div>
       </main>
