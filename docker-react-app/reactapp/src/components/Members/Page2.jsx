@@ -1,12 +1,45 @@
 import './member.css';
-import home_image from "./img/my_photo.jpg";
+// import home_image from "./img/my_photo.jpg";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
-import { db } from "../../firebase";
+import {getDownloadURL, ref, listAll} from "firebase/storage";
+import { db, storage } from "../../firebase";
 
 
 export const Page2=()=>{
 
+  const [image, setImage]= useState([]);
+  // グローバル配列をおきます。
+  const prefixes=[];
+  const image_name=[];
+  // imgの取得
+  const OutImage=(image_name)=>{
+    console.log("OutImage関数内のimage_name配列の中身: "+image_name);
+    const gsReference = ref(
+      storage,
+      image_name[0],
+    );
+
+    getDownloadURL(gsReference)
+    .then((url) =>{
+      setImage(url)
+    }).catch((error)=>console.log("Errorです。:"+error));
+  }
+
+  const listRef = ref(storage, "gs://sanso-kawanami-slab.appspot.com/members");
+  listAll(listRef).then((res)=>{
+    res.prefixes.forEach((folderRef)=>{
+      prefixes.push(folderRef);
+    });
+    res.items.forEach((folderRef)=>{
+      image_name.push(folderRef);
+      console.log("関数内でのimage_name配列の中身: "+image_name);
+    })
+    console.log("listAll関数内でのimage_name配列の中身: "+image_name[0]);
+    OutImage(image_name);
+  }).catch((error)=>{
+    console.log("エラーですで");
+  })
   const [post, setPosts] = useState([]);
   useEffect(() => {
     //データ取得
@@ -45,7 +78,7 @@ export const Page2=()=>{
                 <p>It was a dark and stormy night...wwwwwwwwwwwwwwwwwwwwwdsdasddssdfsdfsdfwfdfw sdfsadfsdfsdfsdfsdfsdfdf</p>
               </div>
             <div className='member_profile_img profile'>
-                <img src={home_image} alt="" />
+                <img src={image} alt="" />
             </div>
           </div>
         {/* 更新するエリア */}
@@ -70,7 +103,7 @@ export const Page2=()=>{
                 <p>{users.comments}</p>
               </div>
             <div className='member_profile_img profile'>
-                <img src={home_image} alt="" />
+                <img src={image} alt="" />
             </div>
           </div>
           </div>
