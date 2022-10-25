@@ -1,5 +1,5 @@
 import './project.css';
-import test_img from './img/test.jpg';
+// import test_img from './img/test.jpg';
 import React from "react";
 // import {useCollection} from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ export const Page1=()=>{
   console.log(image);
   console.log(setImage);
 
+  // グローバル配列をおきます。
   const prefixes=[];
   const image_name=[];
   // imgの取得
@@ -29,7 +30,7 @@ export const Page1=()=>{
     }).catch((error)=>console.log("Errorです。:"+error));
   }
 
-  const listRef = ref(storage, "gs://sanso-kawanami-slab.appspot.com/image/");
+  const listRef = ref(storage, "gs://sanso-kawanami-slab.appspot.com/projects");
   listAll(listRef).then((res)=>{
     res.prefixes.forEach((folderRef)=>{
       prefixes.push(folderRef);
@@ -37,20 +38,12 @@ export const Page1=()=>{
     res.items.forEach((folderRef)=>{
       image_name.push(folderRef);
       console.log("関数内でのimage_name配列の中身: "+image_name);
-
     })
     console.log("listAll関数内でのimage_name配列の中身: "+image_name[0]);
     OutImage(image_name);
   }).catch((error)=>{
     console.log("エラーですで");
   })
-
-  console.log("main関数うんちでのimage_name配列の中身: "+image_name);
-
-
-
-  
-
 
   const [post, setPosts] = useState([]);
   useEffect(() => {
@@ -82,7 +75,6 @@ export const Page1=()=>{
                 <h1>Projects</h1>
                 <p>研究紹介</p>
               </div>
-              <img src={image} alt="" />
           </div>
           {/* 更新エリア */}
           {post.map((news, index) => (
@@ -92,7 +84,8 @@ export const Page1=()=>{
               <p>{news.title}</p>
             </div>
             <div className='project_contents_img project_aria'>
-              <img src={test_img} alt=""></img>
+              <img src={image} alt="" />
+
             </div>
             <hr width="90%"></hr>
           </div>
