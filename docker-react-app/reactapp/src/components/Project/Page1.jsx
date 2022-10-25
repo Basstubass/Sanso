@@ -4,10 +4,53 @@ import React from "react";
 // import {useCollection} from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
-import {getDownloadURL, ref} from "firebase/storage";
-import { db, firestorage } from "../../firebase";
+import {getDownloadURL, ref, listAll} from "firebase/storage";
+import { db, storage } from "../../firebase";
 
 export const Page1=()=>{
+
+  const[image, setImage]=useState([]);
+  console.log(image);
+  console.log(setImage);
+
+  const prefixes=[];
+  const image_name=[];
+  // imgの取得
+  const OutImage=(image_name)=>{
+    console.log("OutImage関数内のimage_name配列の中身: "+image_name);
+    const gsReference = ref(
+      storage,
+      image_name[0],
+    );
+
+    getDownloadURL(gsReference)
+    .then((url) =>{
+      setImage(url)
+    }).catch((error)=>console.log("Errorです。:"+error));
+  }
+
+  const listRef = ref(storage, "gs://sanso-kawanami-slab.appspot.com/image/");
+  listAll(listRef).then((res)=>{
+    res.prefixes.forEach((folderRef)=>{
+      prefixes.push(folderRef);
+    });
+    res.items.forEach((folderRef)=>{
+      image_name.push(folderRef);
+      console.log("関数内でのimage_name配列の中身: "+image_name);
+
+    })
+    console.log("listAll関数内でのimage_name配列の中身: "+image_name[0]);
+    OutImage(image_name);
+  }).catch((error)=>{
+    console.log("エラーですで");
+  })
+
+  console.log("main関数うんちでのimage_name配列の中身: "+image_name);
+
+
+
+  
+
 
   const [post, setPosts] = useState([]);
   useEffect(() => {
@@ -23,17 +66,7 @@ export const Page1=()=>{
     
   },[]);
 
-  const[image, setImage]=useState([]);
-  const gsReference = ref(
-    firestorage,
-    "gs://sanso-kawanami-slab.appspot.com/AKIRA違い.jpeg",
-  );
 
-  getDownloadURL(gsReference)
-    .then((url) =>{
-      setImage(url)
-    })
-    .catch((error)=>console.log("Errorです。:"+error));
 
   return (
       <main>
