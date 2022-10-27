@@ -243,6 +243,43 @@
 	padding:0 0 3% 0;
 }
 
+/* youtubeリスト */
+.youtube_text{
+    margin-left: 11%;
+    margin-top: 4%;
+}
+.youtube_text h1,p{
+    font-family: 'Lato', sans-serif;
+    margin: 1px;
+}
+.youtube_text h1{
+    font-size: 50px;
+}
+.youtube_aria li p{
+    font-size: 20px;
+}
+
+.youtube_aria{
+    text-align: center;
+    margin-top: 3%;
+    padding: 0;
+    margin-left: 18%;
+    margin-right: 15%;
+    display: flex;
+    flex-wrap: wrap;
+
+}
+.youtube_aria li{
+    margin-top: 5%;
+}
+.youtube_aria li:nth-child(odd){
+    margin-right: 3%;
+}
+.youtube_aria li:nth-child(even){
+    margin-left: 3%;
+}
+
+
 /* image 3 */
 .list_img{
     text-align: center;
@@ -252,8 +289,6 @@
     margin-top: 4%;
     margin-bottom: 8%;
     background-color: rgba(0,0,0,0.5);
-    
-    
 }
 .img_aria{
     display: inline-block;
@@ -287,7 +322,6 @@
     left: 15%;
     font-family: 'Lato', sans-serif;
     letter-spacing: 5px;
-
 }
 .Projects_img_aria i{
     position: absolute;
@@ -303,9 +337,9 @@
     font-weight: lighter;
 }
 
-/* .other_aria{
-    text-align: center;
-} */
+
+
+
 .other_aria hr{
     height:0px;
 	border-style:solid;
@@ -337,7 +371,16 @@
     font-family: 'Lato', sans-serif;
 }
 .other_text{
-    margin-top: 5%;
+    margin-top: 3%;
+    padding: 0;
+    margin-left: 10%;
+    margin-right: 10%;
+
+}
+
+.other_text ul{
+    padding: 0;
+
 }
 .other_text li{
     margin-right: 1%;
@@ -348,6 +391,10 @@
 .other_text i{
     font-size: 20px;
 }
+
+
+
+
 
 /* アニメーション */
 .bg {

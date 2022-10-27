@@ -6,7 +6,6 @@ import member_img from "./img/Pasted Graphic 2.jpg";
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, onSnapshot, limit, query} from "firebase/firestore";
 import dayjs from 'dayjs';
-
 import { db } from "../../firebase";
 
 export const Home=()=>{
@@ -96,10 +95,6 @@ export const Home=()=>{
             </div>
             
             {/* ニュースとトピックはボタンにて制御 */}
-            {/* データベースより取得、news_textcontentsを生成 */}
-
-            {/* データベースより取得、news_textcontentsを生成 */}
-
             {/* for文を用いて更新順5つを表示したいです */}
             <div className={val ? "news_topics_aria" : "hidden"}>
                {/* 更新するエリア */}
@@ -138,6 +133,31 @@ export const Home=()=>{
           {/* リストエリア */}
           <div className='list_aria'>
             <hr width="80%"></hr>
+            <div className='youtube_list_aria youtube_text'>
+              <h1>Activity</h1>
+              <p>取り組み</p>
+            </div>
+                <ul className='youtube_aria'>
+                  <li>
+                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+                    <p>動画の内容</p>
+                  </li>
+                  <li>
+                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+                    <p>動画の内容</p>
+                  </li>
+                  <li>
+                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+                    <p>動画の内容</p>
+                  </li>
+                  <li>
+                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+                    <p>動画の内容</p>
+                  </li>
+                  <li></li>
+                </ul>
+                <hr width="80%"></hr>
+
             <div className='list_img'>
               <a href='/project'>
                 <div className='Projects_img_aria img_aria'>
