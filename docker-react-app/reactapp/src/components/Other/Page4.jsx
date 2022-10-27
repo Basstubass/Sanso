@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 // import { db ,firestorage } from "../../firebase";
 import { Timestamp, collection, addDoc } from "firebase/firestore";
 import { db, storage } from "../../firebase";
+// eslint-disable-next-line no-unused-vars
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export const Page4=()=>{
