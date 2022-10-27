@@ -18,6 +18,7 @@ export const Home=()=>{
 
   const [news_post, setNewsposts] = useState([]);
   const [topic_post, setTopicsposts] = useState([]);
+  const [youtube_post, setYoutube_post] = useState([]);
 
   useEffect(() => {
     //データ取得
@@ -36,7 +37,18 @@ export const Home=()=>{
     onSnapshot(topic_postData, (topic_post) => {
     setTopicsposts(topic_post.doc.map((doc) => ({...doc.data() })));
     });
+
+    const youtube_postData = collection(db, "youtube_links")
+      getDocs(youtube_postData).then((snapShot) => {
+      setYoutube_post(snapShot.docs.map((doc) => ({ ...doc.data() })));
+    });
+      onSnapshot(youtube_postData, (youtube_post) => {
+      setYoutube_post(youtube_post.doc.map((doc) => ({...doc.data() })));
+    });
+
   },[]);
+
+    
 
 
   return (
@@ -138,23 +150,12 @@ export const Home=()=>{
               <p>取り組み</p>
             </div>
                 <ul className='youtube_aria'>
+                {youtube_post.map((youtube)=>(
                   <li>
-                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
-                    <p>動画の内容</p>
+                    <iframe width="400" height="215" src={youtube.link} title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
+                    <p>{youtube.about}</p>
                   </li>
-                  <li>
-                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
-                    <p>動画の内容</p>
-                  </li>
-                  <li>
-                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
-                    <p>動画の内容</p>
-                  </li>
-                  <li>
-                    <iframe width="400" height="215" src="https://www.youtube.com/embed/GkV7hc02fpw" title="YouTube video player" frameborder="0"  allowfullscreen></iframe>
-                    <p>動画の内容</p>
-                  </li>
-                  <li></li>
+                ))}
                 </ul>
                 <hr width="80%"></hr>
 
