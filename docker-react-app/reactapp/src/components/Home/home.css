@@ -4,6 +4,8 @@
 .home_animation_aria{
     height: 500px;
     position:relative;
+    margin-left: 5%;
+    margin-right: 5%;
 }
 .home_animation_aria h1{
     position: absolute;
@@ -189,10 +191,11 @@
 }
 .news_textcontents{
     margin-top: 3%;
-    margin-left: 25%;
+    margin-left: 20%;
     /* margin-right: 40%; */
 }
 .news_textcontents p{
+    margin-top: 1%;
     display: inline-block;
     margin-left: 5%;
     font-size: 15px;
@@ -254,7 +257,6 @@
 }
 .img_aria{
     display: inline-block;
-    margin-left: 10px;
     position: relative;
     margin-top: 5%;
 }
@@ -266,9 +268,11 @@
 }
 .Projects_img_aria{
     opacity: 0.7;
+    margin-right: 3%
 }
 .Member_img_aria{
     opacity: 0.6;
+    margin-left: 3%
 }
 .Projects_img_aria h1{
     position: absolute;
@@ -311,8 +315,8 @@
 }   
 
 .other_contents{
-    height: 400px;
-    width: 80%;
+    height: 250px;
+    width: 73%;
     background-color: #eeee;
     margin: 0 auto;
     border-radius: 10px;
@@ -326,8 +330,9 @@
     font-size: 45px;
 }
 .other_text_contents{
-    margin-left: 7%;
-    padding-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-top: 2%;
     letter-spacing: 2px;
     font-family: 'Lato', sans-serif;
 }
@@ -337,10 +342,52 @@
 .other_text li{
     margin-right: 1%;
     font-size: 25px;
-    margin-left: 15%;
+    margin-left: 5%;
     border-bottom: 1px solid black;
 }
 .other_text i{
     font-size: 20px;
 }
 
+/* アニメーション */
+.bg {
+    animation:slide 15s ease-in-out infinite alternate;
+    background-image: linear-gradient(-30deg, #a7a7a7 50%, #4d4d4d 50% );
+    bottom:0;
+    left: 0;
+    opacity:.5;
+    position:absolute;
+    right: 0;
+    /* top:18%; */
+    height: 100%;
+    z-index:-1;
+    width: 900px;
+  }
+
+  
+  .bg2 {
+    animation-direction:alternate-reverse;
+    animation-duration:20s;
+  }
+  
+  .bg3 {
+    animation-duration:20s;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform:translateX(-50%);
+      /* transform:translateY(25%); */
+    }
+    /* 33%{
+        transform:translateY(25%);
+    }
+    66%{
+        transform:translateY(-25%);
+    } */
+    100% {
+      transform:translateX(50%);
+      /* transform:translateY(-25%); */
+
+    }
+  }

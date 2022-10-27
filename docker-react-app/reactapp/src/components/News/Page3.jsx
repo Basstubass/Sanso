@@ -4,6 +4,11 @@ import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line
 import { collection, doc, getDocs, onSnapshot} from "firebase/firestore";
 import { db } from "../../firebase";
+import dayjs from 'dayjs';
+
+import apple_img from "./img/apple1.jpeg";
+import robot_img from "./img/robot.jpeg";
+
 
 
 export const Page3=()=>{
@@ -26,6 +31,7 @@ export const Page3=()=>{
       onSnapshot(news_postData, (news_post) => {
       setNewsposts(news_post.doc.map((doc) => ({...doc.data() })));
       });
+      // console.log(news_postData)
     
     const topic_postData = collection(db, "topic")
       getDocs(topic_postData).then((snapShot) => {
@@ -71,11 +77,21 @@ export const Page3=()=>{
             <div className={val ? "news_topics_aria" : "hidden"}>
                {/* 更新するエリア */}
                {news_post.map((news)=>(
-              <div className='news_textcontents'>
+              <div className='news_textcontainer'>
               <a href='/news'>
-                  <p>{news.editer}</p>
-                  <p>{news.text}</p>
-                  <hr width="60%"></hr>
+                <div className='news_meta'>
+                  <p>{news.editer} : {dayjs(news.timestamp).format('YYYY/MM/DD HH:mm')}</p>
+                  <p></p>
+                </div>
+                
+                <p>{news.text}</p>
+                  <ul className='newsimg_aria'>
+                    <li><img src={apple_img}/></li>
+                    <li><img src={robot_img}/></li>
+                    <li><img src={apple_img}/></li>
+                    <li><img src={apple_img}/></li>
+                  </ul>
+                <hr width="75%"></hr>
                 </a>
               </div>
               ))}
@@ -84,12 +100,25 @@ export const Page3=()=>{
             </div>
             {topic_post.map((topic)=>(
             <div className={val ? "hidden" : "news_topics_aria"}>
-              <div className='news_textcontents'>
-                <p>{topic.title}</p>
+              <div className='news_textcontainer'>
+                  <a href='/news'>
+                <div className='news_meta'>
+                  <p>{topic.editer} : {dayjs(topic.timestamp).format('YYYY/MM/DD HH:mm')}</p>
+                  <p></p>
+                </div>
                 <p>{topic.text}</p>
-                <hr width="60%"></hr>
+                  <ul className='newsimg_aria'>
+                    <li><img src={apple_img}/></li>
+                    <li><img src={robot_img}/></li>
+                    <li><img src={apple_img}/></li>
+                    <li><img src={apple_img}/></li>
+                  </ul>
+                <hr width="75%"></hr>
+                </a>
               </div>
             </div>
+
+            
             ))}
 
           </div>

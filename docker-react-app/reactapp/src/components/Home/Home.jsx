@@ -1,4 +1,3 @@
-// import {Link, BrowserRouter} from "react-router-dom";
 import './home.css';
 import home_image from "./img/my_photo.jpg";
 import Pasted_img from "./img/Pasted Graphic.jpg";
@@ -6,6 +5,8 @@ import member_img from "./img/Pasted Graphic 2.jpg";
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, onSnapshot, limit, query} from "firebase/firestore";
+import dayjs from 'dayjs';
+
 import { db } from "../../firebase";
 
 export const Home=()=>{
@@ -29,7 +30,6 @@ export const Home=()=>{
       setNewsposts(news_post.doc.map((doc) => ({...doc.data() })));
       });
     
-
     const topic_postData = collection(db, "topic")
       getDocs(query(topic_postData, limit(5))).then((snapShot) => {
         setTopicsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
@@ -40,18 +40,20 @@ export const Home=()=>{
   },[]);
 
 
-
-
-
   return (
     <>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"></link>
       <main>
-        {/* アニメーションは後で付与 */}
-        <div className='home_animation_aria'>
-          <h1>A Livable Society For All</h1>
-          <h2>誰もが生きやすい社会を</h2>
-        </div>
+       <div className='home_animation_aria'>
+          <div className='bg'></div>
+          <div className='bg bg2'></div>
+          <div className='bg bg3'></div>
+              <div className='content'>
+                <h1>A Livable Society For All</h1>
+                <h2>誰もが生きやすい社会を</h2>
+              </div>
+            </div>
+        
         {/* メインはスクロール処理で表示、非表示 */}
         <div className='main'>
           <div className='profile_aria'>
@@ -104,7 +106,7 @@ export const Home=()=>{
                {news_post.map((news)=>(
               <div className='news_textcontents'>
               <a href='/news'>
-                  <p>{news.editer}</p>
+                  <p>{news.editer} : {dayjs(news.timestamp).format('YYYY/MM/DD HH:mm')}</p>
                   <p>{news.text}</p>
                   <hr width="60%"></hr>
                 </a>
@@ -124,11 +126,6 @@ export const Home=()=>{
               </div>
             </div>
             ))}
-
-            {}
-
-
-
             <div className='more_aria'>
               <a href='/news'>
                 <button className='aria_button'>more</button>
@@ -136,6 +133,7 @@ export const Home=()=>{
               </a>
             </div>
           </div>
+
 
           {/* リストエリア */}
           <div className='list_aria'>
@@ -174,16 +172,14 @@ export const Home=()=>{
                   <li>Books</li>
                   <i className='fas fa-angle-right'></i>
                 </a>
-                </ul>
-                <ul className='other_text'>
-                  <a href='/patent'>
-                    <li>Patent</li>
-                    <i className='fas fa-angle-right'></i>
-                  </a>
-                  <a href='/infomation'>
-                    <li>Information</li>
-                    <i className='fas fa-angle-right'></i>
-                  </a>
+                <a href='/patent'>
+                  <li>Patent</li>
+                  <i className='fas fa-angle-right'></i>
+                </a>
+                <a href='/infomation'>
+                  <li>Information</li>
+                  <i className='fas fa-angle-right'></i>
+                </a>
                 </ul>
               </div>
             </div>

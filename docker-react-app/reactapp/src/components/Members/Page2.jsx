@@ -1,45 +1,35 @@
 import './member.css';
-// import home_image from "./img/my_photo.jpg";
+import home_image from "./img/my_photo.jpg";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
-import {getDownloadURL, ref, listAll} from "firebase/storage";
-import { db, storage } from "../../firebase";
+import { db } from "../../firebase";
+// import { Swiper, SwiperSlide } from 'swiper/react';
+// import 'swiper/swiper.scss';
+
+import slideimg1 from "./img/slide1.jpg";
+import slideimg2 from "./img/slide2.jpg";
+import slideimg3 from "./img/slide3.jpg";
+// import styled from "styled-components";
+
 
 
 export const Page2=()=>{
 
-  const [image, setImage]= useState([]);
-  // グローバル配列をおきます。
-  const prefixes=[];
-  const image_name=[];
-  // imgの取得
-  const OutImage=(image_name)=>{
-    console.log("OutImage関数内のimage_name配列の中身: "+image_name);
-    const gsReference = ref(
-      storage,
-      image_name[0],
-    );
+  //スライドショー
+  const active= [slideimg1, slideimg2, slideimg3];
+    let num = -1;
+    function slide_time(){
+      if (num === 2){
+        num = 0;
+      } else {
+        num++;
+      }
+      document.getElementById("slide_img").src = active[num];
+    }
+    setInterval(slide_time, 3000)
+  
+  //スライドショー
 
-    getDownloadURL(gsReference)
-    .then((url) =>{
-      setImage(url)
-    }).catch((error)=>console.log("Errorです。:"+error));
-  }
-
-  const listRef = ref(storage, "gs://sanso-kawanami-slab.appspot.com/members");
-  listAll(listRef).then((res)=>{
-    res.prefixes.forEach((folderRef)=>{
-      prefixes.push(folderRef);
-    });
-    res.items.forEach((folderRef)=>{
-      image_name.push(folderRef);
-      console.log("関数内でのimage_name配列の中身: "+image_name);
-    })
-    console.log("listAll関数内でのimage_name配列の中身: "+image_name[0]);
-    OutImage(image_name);
-  }).catch((error)=>{
-    console.log("エラーですで");
-  })
   const [post, setPosts] = useState([]);
   useEffect(() => {
     //データ取得
@@ -47,70 +37,70 @@ export const Page2=()=>{
         getDocs(postData).then((snapShot) => {
         setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
-
       onSnapshot(postData, (post) => {
         setPosts(post.doc.map((doc) => ({...doc.data() })));
       });
-    
   },[]);
+
   
   return(
     <main>
       <div className='main'>
         <div className='home_animation_aria'>
-          <h1>Labo Member</h1>
-          <h2>研究員紹介</h2>
+          <div className='slide_aria'>
+            <img src={ slideimg1 } id="slide_img" className='slider'/>
+          </div>
+            <h1>Labo Member</h1>
+            <h2>研究員紹介</h2>
         </div>
+
         <div>
         <div className='owners_aria'>
           <h1 className='head-border'> 提督 </h1>
         </div>
           <div className='member_profile_aria'>
-            <div className='member_profile_textcontents profile'>
+            <div className='member_profile_img profile_dev'>
+                <img src={home_image} alt="" />
+            </div>
+            <div className='member_profile_textcontents profile_dev'>
                 <h1> Hajime Kawanami</h1>
                 <h2> 川波 肇</h2>
                 <p> ー 国立研究開発法人産業技術総合研究所</p>
                 <p> ー 触媒化学融合研究センター</p>
                 <p> ー 官能基変換チーム 上級主任研究員</p>
-            </div>
-            <h3>Comments</h3>
-              <div className='members_comments' id="story" name="story"rows="5" cols="33">
-                <p>It was a dark and stormy night...wwwwwwwwwwwwwwwwwwwwwdsdasddssdfsdfsdfwfdfw sdfsadfsdfsdfsdfsdfsdfdf</p>
+              <div className='contact_aria'>
+                <h3>Contact</h3>
+                  <p>TEL：</p>
+                  <p>E-mail：h-kawanami(@)aist.go.jp</p>
               </div>
-            <div className='member_profile_img profile'>
-                <img src={image} alt="" />
+              {/* <div className='comment'>
+                <h3>Comment</h3>
+                
+              </div> */}
             </div>
           </div>
-        {/* 更新するエリア */}
-
         <div className='members_aria'>
           <h1 className='head-border'> 研究員 </h1>
         </div>
-        
         {/* 更新するエリア */}
         {post.map((users)=>(
-        <div>
-        <div className='member_profile_aria'>
-            <div className='member_profile_textcontents profile'>
+        <>
+          <div className='member_profile_aria'>
+            <div className='member_profile_img profile_dev'>
+                <img src={home_image} alt="" />
+            </div>
+            <div className='member_profile_textcontents profile_dev'>
                 <h1> {users.name}</h1>
                 <h2> {users.name}</h2>
                 <p> {users.food}</p>
-                <p> {users.food}</p>
-                <p> {users.food}</p>
-            </div>
-            <h3>Comments</h3>
-              <div className='members_comments' id="story" name="story"rows="5" cols="33">
-                <p>{users.comments}</p>
-              </div>
-            <div className='member_profile_img profile'>
-                <img src={image} alt="" />
             </div>
           </div>
-          </div>
+        </>
         ))}
 
       </div>
       </div>
     </main>
   );
+
 };

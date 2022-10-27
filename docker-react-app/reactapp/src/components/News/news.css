@@ -15,10 +15,45 @@
     font-size: 35px;
     top: 48%;
     left: 18%;
-
     animation: left_SlideIn 2s;
-
 }
+/* NEWSのテキストコンテンツ */
+.news_textcontainer{
+  margin-top: 3%;
+  margin-left: 20%;
+}
+.news_textcontainer p{
+  margin-top: 1%;
+  inline-size: 70%;
+  overflow-wrap: break-word;
+  font-weight: bold;
+  font-family: 'Lato', sans-serif;
+
+  /* font-family: 'Courier New', Courier, monospace; */
+}
+.news_textcontainer hr{
+  margin: 0;
+}
+.newsimg_aria{
+  width: 80%;
+  display: flex;
+  padding: 0;
+  flex-wrap: wrap;
+}
+.newsimg_aria li{
+  margin: 0;
+  margin-top: 3%;
+}
+.newsimg_aria li:not(:nth-child(odd)){
+  margin-left: 3%;
+}
+.newsimg_aria li img{
+  width: 300px;
+}
+
+
+
+
 
 @keyframes right_SlideIn {
     0% {
