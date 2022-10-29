@@ -1,0 +1,68 @@
+.mainContent{
+    text-align: center;
+    /* font-size: 30px; */
+    /* font-family: 'Lato', sans-serif; */
+    margin-top: 10%;
+}
+.pageTitle{
+    font-size: 30px;
+}
+.formInput{
+    text-align: left;
+    width: 20%;
+    height: 25px;
+    border-radius: 5px;
+    border: 0;
+    /* height: 0px; */
+    margin-bottom: 10px;
+
+}
+.contentsBox label{
+    font-size: 18px;
+    font-family: "Hiragino Sans","ヒラギノ角ゴシック"; 
+    font-weight: 400;
+
+}
+.con_from{
+    height: 100px;
+}
+
+.contentsBox p{
+    margin-top: 3%;
+    margin-bottom: 3%;
+    font-size: 15px;
+}
+
+.btns{
+    margin-top: 3px;
+}
+.from_submit{
+    margin-top: 1%;
+    margin-bottom: 2%;
+    width: 180px;
+    height: 40px;
+    border-radius: 100px;
+    border: 0;
+    padding: 6px;
+    background-color: rgb(255, 113, 141);
+    color: white;
+    opacity: .6;
+
+}
+.from_submit:hover{
+    cursor: pointer;
+    opacity: 1;
+
+}
+.cancel_btn{
+    border: 0;
+    border-radius: 5px;
+    padding: 5px;
+    opacity: .8;
+}
+.cancel_btn:hover{
+    border: 0;
+    border-radius: 5px;
+    padding: 6px;
+    opacity: 1;
+}

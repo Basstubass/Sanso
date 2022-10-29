@@ -197,7 +197,7 @@ export const Home=()=>{
                   <li>Patent</li>
                   <i className='fas fa-angle-right'></i>
                 </a>
-                <a href='/infomation'>
+                <a href='/Information'>
                   <li>Information</li>
                   <i className='fas fa-angle-right'></i>
                 </a>

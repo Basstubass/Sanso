@@ -10,8 +10,19 @@ import { db, storage } from "../../firebase";
 export const Page1=()=>{
 
   const[image, setImage]=useState([]);
-  console.log(image);
-  console.log(setImage);
+  const[project, setProject]=useState([]);
+
+  useEffect(() => {
+    //データ取得
+    const project_postData = collection(db, "project")
+      getDocs(project_postData).then((snapShot) => {
+      setProject(snapShot.docs.map((doc) => ({ ...doc.data() })));
+      });
+      onSnapshot(project_postData, (news_post) => {
+      setProject(news_post.doc.map((doc) => ({...doc.data() })));
+      });
+      // console.log(news_postData)
+  },[]);
 
   // グローバル配列をおきます。
   const prefixes=[];
@@ -45,20 +56,6 @@ export const Page1=()=>{
     console.log("エラーですで");
   })
 
-  const [post, setPosts] = useState([]);
-  useEffect(() => {
-    //データ取得
-    const postData = collection(db, "news")
-        getDocs(postData).then((snapShot) => {
-        setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
-      });
-
-      onSnapshot(postData, (post) => {
-        setPosts(post.doc.map((doc) => ({...doc.data() })));
-      });
-    
-  },[]);
-
 
 
   return (
@@ -77,19 +74,19 @@ export const Page1=()=>{
               </div>
           </div>
           {/* 更新エリア */}
-          {post.map((news, index) => (
+          {project.map((project, index) => (
             <div className='project_contents' key={index}>
             <div className='project_contents_text project_aria'>
-              <h1>{news.title}</h1>
-              <p>{news.title}</p>
+              <h1>{project.title}</h1>
+              <p>{project.text}</p>
             </div>
             <div className='project_contents_img project_aria'>
               <img src={image} alt="" />
-
             </div>
             <hr width="90%"></hr>
           </div>
           ))}
+          
           {/* 更新エリア */}
         </div>
       </main>

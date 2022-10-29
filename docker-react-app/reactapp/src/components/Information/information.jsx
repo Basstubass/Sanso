@@ -62,26 +62,8 @@ export const Information=()=>{
     };
     const disableSend = name === '' || mail === '' || title === '' || message === '';
 
-
-  // 一旦この関数には死んでもらおう
-  // const [post, setPosts] = useState([]);
-  // useEffect(() => {
-  //   //データ取得
-  //   const postData = collection(db, "news")
-  //       getDocs(postData).then((snapShot) => {
-  //       setPosts(snapShot.docs.map((doc) => ({ ...doc.data() })));
-  //     });
-
-  //     onSnapshot(postData, (post) => {
-  //       setPosts(post.doc.map((doc) => ({...doc.data() })));
-  //     });
-    
-  // },[]);
-
     return (
       <div>
-        <h1>Infomation</h1>
-
         <div className="mainContent">
           <h2 className="pageTitle">お問い合わせ</h2>
           <div className="contentsBox">
@@ -92,7 +74,7 @@ export const Information=()=>{
             </p>
             <form>
               <div>
-                <label htmlFor="nameForm">ご氏名：</label>
+                <label className="formInput " htmlFor="nameForm" >ご氏名</label>
               </div>
               <input
                 type="text"
@@ -102,7 +84,7 @@ export const Information=()=>{
                 onChange={(e) => setName(e.target.value)}
               />
               <div>
-                <label htmlFor="companyNameForm">会社名：</label>
+                <label className="formInput" htmlFor="companyNameForm">会社名</label>
               </div>
               <input
                 type="text"
@@ -113,7 +95,7 @@ export const Information=()=>{
                 onChange={(e) => setCompany(e.target.value)}
               />
               <div>
-                <label htmlFor="mailForm">メールアドレス：</label>
+                <label className="formInput" htmlFor="mailForm">メールアドレス</label>
               </div>
               <input
                 type="email"
@@ -123,7 +105,7 @@ export const Information=()=>{
                 onChange={(e) => setMail(e.target.value)}
               />
               <div>
-                <label htmlFor="mailTitleForm">件名：</label>
+                <label className="formInput" htmlFor="mailTitleForm">件名</label>
               </div>
               <input
                 type="text"
@@ -133,13 +115,14 @@ export const Information=()=>{
                 onChange={(e) => setTitle(e.target.value)}
               />
               <div>
-                <label htmlFor="mailContentForm">お問い合わせ内容：</label>
+                <label className='formInput' htmlFor="mailContentForm">お問い合わせ内容</label>
               </div>
               <textarea
                 type="text"
                 id="mailContentForm"
-                className="formInput"
+                className="formInput con_from"
                 rows="5"
+                height="315px"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
@@ -151,8 +134,9 @@ export const Information=()=>{
                     endIcon={<sendIcon />}
                     onClick={handleClick}
                     disabled={disableSend}
+                    className='from_submit'
                   >
-                    <strong>お問い合わせを送信する</strong>
+                    <strong>送信</strong>
                   </button>
                 </div>
                 <div>
@@ -161,6 +145,7 @@ export const Information=()=>{
                     color="default"
                     endIcon={<clearIcon />}
                     onClick={handleCanceled}
+                    className='cancel_btn'
                   >
                     <strong>キャンセル</strong>
                   </button>
