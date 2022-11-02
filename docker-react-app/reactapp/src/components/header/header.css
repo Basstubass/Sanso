@@ -1,16 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Lato:ital,wght@1,300&family=Lobster&family=PT+Serif:ital@1&family=Quattrocento:wght@400;700&display=swap');
-
 body{
     background-color: #D9D9D9;
 }
-/* header{
-    height: 50px;
-} */
+
+
+/* レスポンシブ */
+@media screen and (max-width: 480px) {
+    .header{
+        height: 80px;
+    }
+    .header .pc_ress{
+        /* display: none; */
+    }
+    .header a img{
+        margin-top: 6%;
+        width: 150px;
+    }
+}
+
+
+
 .header{
     margin: 3%;
     /* position: fixed;
     width: 100%; */
-    
+}
+.phone_ress{
+    display: none;
 }
 .header ul{
     /* margin-top: px;. */

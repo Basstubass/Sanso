@@ -53,14 +53,6 @@ export const Dissertation=()=>{
               </div>
               ))}
                {/* 更新するエリア */}
-               <div className='dissertation_textcontents'>
-                <h1>Catalysis Science & Technology </h1>
-                <p>Vol.11, No.14 pp.4661-5016, 2021</p>
-                <p className='diss_main'>Maya Chatterjee, Abhijit Chatterjee, Mitsunori Kitta, Hajime Kawanami
-                   Selectivity controlled transformation of carbon dioxide into a versatile bi-functional 
-                   multi-carbon oxygenate using a physically mixed ruthenium-iridium catalyst</p>
-                <hr width="70%"></hr>
-              </div>
             </div>
           </div>
       </div>

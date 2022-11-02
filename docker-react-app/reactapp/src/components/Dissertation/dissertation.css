@@ -15,3 +15,18 @@
 .diss_main{
     font-weight: bold;
 }
+@media screen and (max-width: 480px) {
+    .dissertation_textcontents{
+        margin-left: 5%;
+        margin-top: 10%;
+    }
+    .dissertation_textcontents h1{
+        margin-bottom: 5%;
+    }
+    .dissertation_textcontents p {
+        width: 90%;
+    }
+    .dissertation_textcontents hr{
+        width: 90%;
+    }
+}

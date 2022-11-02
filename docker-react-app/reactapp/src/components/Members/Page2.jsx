@@ -26,7 +26,7 @@ export const Page2=()=>{
       }
       document.getElementById("slide_img").src = active[num];
     }
-    setInterval(slide_time, 3000)
+    setInterval(slide_time, 5000)
   
   //スライドショー
 
@@ -50,8 +50,8 @@ export const Page2=()=>{
           <div className='slide_aria'>
             <img src={ slideimg1 } id="slide_img" className='slider'/>
           </div>
-            <h1>Labo Member</h1>
-            <h2>研究員紹介</h2>
+            <h1 id="member_h1">Labo Member</h1>
+            <h2 id="member_h2">研究員紹介</h2>
         </div>
 
         <div>

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot} from "firebase/firestore";
 import {getDownloadURL, ref, listAll} from "firebase/storage";
 import { db, storage } from "../../firebase";
+import video from "./7768_640x360.mp4";
 
 export const Page1=()=>{
 
@@ -62,6 +63,7 @@ export const Page1=()=>{
       <main>
         <div className='main'>
           <div className='news_animation_aria'>
+            {/* <video src={video} autoplay muted></video> */}
             <h1>Projects</h1>
             <h2>研究紹介</h2>
           </div>
@@ -85,8 +87,7 @@ export const Page1=()=>{
             </div>
             <hr width="90%"></hr>
           </div>
-          ))}
-          
+          ))}   
           {/* 更新エリア */}
         </div>
       </main>

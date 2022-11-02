@@ -60,7 +60,7 @@
     height: 100%;
 }
 #slide_img{
-    animation :imgfade 3s infinite;
+    animation :imgfade 5s infinite;
     opacity: 0;
     border-radius: 10px;
 }
@@ -84,4 +84,44 @@
 	100% {
 		opacity: 0;
 	}
+}
+
+@media screen and (max-width: 480px) {
+    .owners_aria {
+        text-align: center;
+        margin-top: 10%;
+        margin-bottom: 15%;
+    }
+    #member_h1{
+        margin: 0;
+    }
+    #member_h2{
+        margin: 0;
+        top: 40%;
+        left: 60%;
+    }
+    .member_profile_aria{
+        height: 550px;
+        margin: 0;
+    }
+    .member_profile_img{
+        width: 50%;
+        margin-left: 25%;
+        margin-right: 25%;
+       
+    }
+    .member_profile_img img{
+        width: 100%;
+    }
+    .member_profile_textcontents{
+        position: inherit;
+        left: 0;
+        text-align: center;
+    }
+    .contact_aria{
+        text-align: left;
+        margin-left: 10%;
+        margin-top: 5%;
+    }
+    
 }
