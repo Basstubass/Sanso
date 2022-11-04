@@ -34,19 +34,19 @@ export const Patent=()=>{
   
           <div className='news'>
               <hr width="80%"></hr>
-              <div className='news_aria news_text'>
+              <div className='news_aria news_text' id="patent_title">
                 <h1>Patent</h1>
                 <p>論文紹介</p>
               </div>
               
-              <div className='radiobutton news_aria'>
+              <div className='radiobutton news_aria' id="jp_patent">
                 <label for="radio1">
                   <input id="radio1"  name="hoge" type="radio" value="news" defaultChecked 
                   onChange={classToggle}/>
                   国内特許
                 </label>
               </div>
-              <div className='radiobutton news_aria'>
+              <div className='radiobutton news_aria' id="wd_patent">
                 <label for="radio2">
                   <input id="radio2"  name="hoge" type="radio" value="topics"
                   onChange={classToggle}/>
@@ -59,9 +59,8 @@ export const Patent=()=>{
               <div className={val ? "news_topics_aria" : "hidden"}>
                  {/* 更新するエリア */}
                  {post.map((patent)=>(
-                <div className='news_textcontents'>
+                <div className='news_textcontents' id="textcontents">
                   <p>{patent.text}</p>
-                  <p></p>
                   <hr width="60%"></hr>
                 </div>
                 ))}
@@ -373,7 +372,6 @@ export const Patent=()=>{
 
               <div className={val ? "hidden" : "news_topics_aria"}>
                 <div className='news_textcontents'>
-                  <p>2001/01/30</p>
                   <p>これは海外特許の時に出現します。</p>
                   <ol reversed class="patent-list">
                   <p> 特開2020-143046 (2021年09月10日), 特願2020-028010 (2020/01/21)</p>

@@ -102,3 +102,38 @@
 	border-style:solid;
 	border-width:0 0 1px 0;
 }
+
+
+
+
+@media screen and (max-width: 480px) {
+ .news_textcontainer{
+  margin-left: 0;
+  text-align: center;
+  margin-top: 20%;
+ }
+ .news_meta{
+  margin-bottom: 10%;
+ }
+ .news_meta p{
+  text-align: left;
+  margin-bottom: 3%;
+ }
+ .news_textcontainer p{
+  margin-top: 0;
+  inline-size: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+ }
+ .newsimg_aria{
+  display: initial;
+ }
+ .news_textcontainer hr{
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10%;
+ }
+
+
+
+}

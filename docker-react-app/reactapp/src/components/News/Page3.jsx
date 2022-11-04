@@ -81,10 +81,8 @@ export const Page3=()=>{
               <a href='/news'>
                 <div className='news_meta'>
                   <p>{news.editer} : {dayjs(news.timestamp).format('YYYY/MM/DD HH:mm')}</p>
-                  <p></p>
+                  <p>{news.text}</p>
                 </div>
-                
-                <p>{news.text}</p>
                   <ul className='newsimg_aria'>
                     <li><img src={apple_img}/></li>
                     <li><img src={robot_img}/></li>

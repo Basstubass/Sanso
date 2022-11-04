@@ -1,11 +1,12 @@
 import './project.css';
-// import test_img from './img/test.jpg';
+import noimage from './img/noimage.png';
 import React from "react";
 // import {useCollection} from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
 import { collection, getDocs, onSnapshot, query, where} from "firebase/firestore";
 import {getDownloadURL, ref, listAll} from "firebase/storage";
 import { db, storage } from "../../firebase";
+import video from "./7768_640x360.mp4";
 
 export const Page1=()=>{
 
@@ -21,12 +22,11 @@ export const Page1=()=>{
       onSnapshot(postData, (post) => {
         setPosts(post.doc.map((doc) => ({...doc.data() })));
       });
-      post.map((value, index)=>(
-        console.log(`1回目のpostの中身${value.link}`)
-      ));
+      // post.map((value, index)=>(
+      //   // console.log(`1回目のpostの中身${value.link}`)
+      // ));
   },[]);
 
-  const[image, setImage]=useState([]);
   const[project, setProject]=useState([]);
 
   useEffect(() => {
@@ -41,39 +41,64 @@ export const Page1=()=>{
       // console.log(news_postData)
   },[]);
 
-  // グローバル配列をおきます。
-  const prefixes=[];
-  const image_name=[];
+
+  const[images, setImages]=useState([]);
 
   // storageから直接持ってくる関数
   // imgの取得
-  const OutImage=()=>{
-    // console.log("OutImage関数内のimage_name配列の中身: "+image_name);
-    const gsReference = ref(
-      storage,
-      image_name[0],
-    );
+  useEffect(()=>{
+    const fetchImages = async () =>{
+      // let result = await storage.ref().child("gs://sanso-kawanami-slab.appspot.com/projects").listAll();
+      let result = ref(storage, "gs://sanso-kawanami-slab.appspot.com/projects");
 
-    getDownloadURL(gsReference)
-    .then((url) =>{
-      setImage(url)
-    }).catch((error)=>console.log("Errorです。:"+error));
+      // listAllでディレクトリの全ての結果を取得できる。全ての結果をメモリにバッファリングする。
+      let all_result = await listAll(result);
+
+      // console.log(`resultの中身:${result}`);
+      // console.log(`all_resultの中身:${all_result}`);
+      // console.log(`itemsの値: ${all_result.items}`);
+// ここまで、できてる↑
+// imageRef.getDownloadURLからgetDownloadURL(imageRef)に変えたら急にloadImgesまで読み込めた
+
+      let urlPromises = all_result.items.map((imageRef) => {
+          let images_urls = getDownloadURL(imageRef);
+          // console.log(`imageRefの値: ${imageRef}`);
+          // console.log(`images_urlsの値: ${images_urls}`);
+
+          return images_urls;
+      });
+
+      // console.log(`urlPromisesの値: ${urlPromises}`);
+
+      console.log("fetchImage関数を処理しました");
+      return Promise.all(urlPromises);
+    };
+
+    const loadImages = async () =>{
+      const urls = await fetchImages();
+      // console.log(`loadImagesのurlsの中身:${urls}`);
+      setImages(urls);
+      
+      console.log("loadImages関数を処理しました");
+    };
+    loadImages();
+
+  },[]);
+
+  console.log(images);
+
+  
+  let image_index=-1;
+  const hasImage=(project, images)=>{
+    // console.log(`image_index:${image_index}`)
+    if(project.need_image){
+      image_index=image_index+1;
+      return <img src={images[image_index]} alt="" />
+    }else{
+      return <img src={noimage} alt="" />
+    }
   }
 
-  const listRef = ref(storage, "gs://sanso-kawanami-slab.appspot.com/projects");
-  listAll(listRef).then((res)=>{
-    res.prefixes.forEach((folderRef)=>{
-      prefixes.push(folderRef);
-    });
-    res.items.forEach((folderRef)=>{
-      image_name.push(folderRef);
-      // console.log("関数内でのimage_name配列の中身: "+image_name);
-    })
-    // console.log("listAll関数内でのimage_name配列の中身: "+image_name[0]);
-    OutImage(image_name);
-  }).catch((error)=>{
-    console.log("エラーですで");
-  })
 
 
 
@@ -81,6 +106,7 @@ export const Page1=()=>{
       <main>
         <div className='main'>
           <div className='news_animation_aria'>
+            {/* <video src={video} autoplay muted></video> */}
             <h1>Projects</h1>
             <h2>研究紹介</h2>
           </div>
@@ -100,23 +126,26 @@ export const Page1=()=>{
               <p>{project.text}</p>
             </div>
             <div className='project_contents_img project_aria'>
-              <img src={image} alt="" />
+              {hasImage(project, images)}
+              {/* <img src={images[index]} alt="" /> */}
             </div>
             <hr width="90%"></hr>
           </div>
           ))}
-     {post.map((value, index) => (
+
+          {/* 一旦、postをコメントアウト */}
+     {/* {post.map((value, index) => (
             <div className='project_contents' key={index}>
             <div className='project_contents_text project_aria'>
               <h1>{value.id}</h1>
               <p>{value.link}</p>
             </div>
             <div className='project_contents_img project_aria'>
-              <img src={image} alt="" />
+              <img src={images[index]} alt="" />
             </div>
             <hr width="90%"></hr>
           </div>
-          ))}
+          ))} */}
           
           {/* 更新エリア */}
         </div>

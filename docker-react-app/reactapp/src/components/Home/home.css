@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Lato:ital,wght@1,300&family=Lobster&family=PT+Serif:ital@1&family=Quattrocento:wght@400;700&display=swap');
 
-
 .home_animation_aria{
     height: 500px;
     position:relative;
@@ -438,3 +437,129 @@
 
     }
   }
+
+  @media screen and (max-width: 480px) {
+    .bg, .bg2, .bg3{
+        display: none;
+    }
+    .home_animation_aria h1{
+        font-size: 35px;
+    }
+    .home_animation_aria h2{
+        margin-top: 10%;
+        font-size:25px;
+        left: 20%;
+    }
+    .profile_textcontents{
+        margin: 0;
+    }
+    .profile{
+        display: initial;
+        margin-bottom: 10%;
+    }
+    .profile_aria{
+        height: 750px;
+    }
+    .profile_textcontents h1{
+        letter-spacing: 5px;
+        text-align: center;
+    }
+    .profile_textcontents h2{
+        text-align: center;
+        margin-top: 10%;
+        margin-bottom: 10%;
+    }
+    .profile_textcontents p{
+        margin-right: 3%;
+    }
+    .profile_img{
+        text-align: center;
+        margin: inherit;
+    }
+    .profile_img img{
+        margin-right: 7%;
+        margin-left: 7%;
+        margin-top: 10%;
+    }
+    .scrolldown4{
+        display: none;
+    }
+
+    /* ニュース */
+    .radiobutton{
+        margin-bottom: 10%;
+    }
+    .news_textcontents{
+        margin-left: 10%;
+        margin-bottom: 10%;
+    }
+    .news_textcontents hr{
+        width: 90%;
+        margin: 0;
+    }
+    .news_textcontents p{
+        width: 90%!important;
+        margin: inherit;
+        margin-bottom: 3%;
+    }
+    .list_aria{
+        margin-top: 10%;
+    }
+    .list_aria hr{
+        /* margin: 0; */
+        width: 90%;
+        display: none;
+    }
+    .youtube_aria li:nth-child(odd){
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .youtube_aria li:nth-child(even){
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .youtube_aria{
+        margin-top: 10%;
+        margin: 0;
+    }
+    .youtube_aria li{
+        margin-top: 10%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .youtube_aria li iframe{
+        width: 110%;
+        margin-right: 10%;
+        margin-left: 10%;
+    }
+    .youtube_aria li p{
+        margin-left: 30%;
+    }
+    .list_img{
+        margin-top: 30%;
+    }
+
+    .list_img img{
+        width: 300px;
+    }
+    .list_img h1{
+        font-size: 30px;
+        top: 60%;
+        width: 230px;
+    }
+    .list_img i{
+        font-size: 40px;
+    }
+    .other_contents{
+        width: 95%;
+    }
+    .other_text{
+        /* margin-left: 0; */
+        margin: 0;
+        margin-top: 10%;
+    }
+    .other_text li{
+        margin-top: 5%;
+    }
+
+}

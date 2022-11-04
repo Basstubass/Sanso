@@ -66,3 +66,22 @@
     padding: 6px;
     opacity: 1;
 }
+
+@media screen and (max-width: 480px) {
+    .contentsBox{
+        text-align: center;
+    }
+    .contentsBox p{
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 80%;
+    }
+    .formInput{
+        width: 60%;
+        /* height: 35px */
+
+    }
+    .cancel_btn{
+        margin-top: 3%;
+    }
+}

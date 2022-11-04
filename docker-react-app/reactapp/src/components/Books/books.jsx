@@ -42,9 +42,9 @@ export const Books=()=>{
                  {/* 更新するエリア */}
                  {post.map((books)=>
                 <div className='news_textcontents'>
-                  <h2>{books.author}</h2>
-                  <p>{books.title}</p>
-                  <p>{books.publication_info}</p>
+                  <h2 id="book_author">{books.author}</h2>
+                  <p id="book_title">{books.title}</p>
+                  <p id="book_text">{books.publication_info}</p>
                   <hr width="60%"></hr>
                 </div>
                 )}
