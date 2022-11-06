@@ -1,0 +1,32 @@
+.dissertation_textcontents{
+    margin-left: 18%;
+}
+.dissertation_textcontents h1{
+    margin: 0;
+    margin-left: 5%;
+}
+.dissertation_textcontents p{
+    margin-bottom: 2%;
+    /* margin-left: 2%; */
+    overflow-wrap: break-word;
+    width: 60%;
+    margin-left: 5%;
+}
+.diss_main{
+    font-weight: bold;
+}
+@media screen and (max-width: 480px) {
+    .dissertation_textcontents{
+        margin-left: 5%;
+        margin-top: 10%;
+    }
+    .dissertation_textcontents h1{
+        margin-bottom: 5%;
+    }
+    .dissertation_textcontents p {
+        width: 90%;
+    }
+    .dissertation_textcontents hr{
+        width: 90%;
+    }
+}

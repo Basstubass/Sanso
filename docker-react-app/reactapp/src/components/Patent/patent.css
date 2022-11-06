@@ -1,0 +1,17 @@
+@media screen and (max-width: 480px){
+    #jp_patent{
+        margin-top: 5%;
+        margin-left: 13%;
+    }
+    #wd_patent{
+        margin-top: 5%;
+    }
+    #patent_title{
+        width: 90%;
+    }
+    #textcontents{
+        margin: 0;
+        margin-left: 3%;
+        margin-top: 5%;
+    }
+}
