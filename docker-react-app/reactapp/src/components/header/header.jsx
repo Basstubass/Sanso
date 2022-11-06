@@ -21,7 +21,7 @@ export const Header=()=>{
                 <a href="/members"> Members </a>
               </li>
               <li>
-                <a href="/News"> News </a>
+                <a href="/Dissertation"> Dissertation </a>
               </li>
               <li>
                 <a href="/Information"> Information</a>
@@ -44,6 +44,7 @@ export const Header=()=>{
                         </li>
                         <li>
                           <a href="/News"> News </a>
+                          <a href="/Dissertation"> Dissertation </a>
                         </li>
                         <li>
                           <a href="/Information"> Information</a>

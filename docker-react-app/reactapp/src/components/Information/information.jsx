@@ -64,97 +64,125 @@ export const Information=()=>{
 
     return (
       <div>
-        <div className="mainContent">
-          <h2 className="pageTitle">お問い合わせ</h2>
-          <div className="contentsBox">
-            <p>
-              お問い合わせは、以下のフォームから受け付けております。
-              <br />
-              SNSからのコンタクトでも大丈夫や!!
-            </p>
-            <form>
-              <div>
-                <label className="formInput " htmlFor="nameForm" >ご氏名</label>
-              </div>
-              <input
-                type="text"
-                id="nameForm"
-                className="formInput"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <div>
-                <label className="formInput" htmlFor="companyNameForm">会社名</label>
-              </div>
-              <input
-                type="text"
-                id="companyNameForm"
-                className="formInput"
-                required
-                value={company}
-                onChange={(e) => setCompany(e.target.value)}
-              />
-              <div>
-                <label className="formInput" htmlFor="mailForm">メールアドレス</label>
-              </div>
-              <input
-                type="email"
-                id="mailForm"
-                className="formInput"
-                value={mail}
-                onChange={(e) => setMail(e.target.value)}
-              />
-              <div>
-                <label className="formInput" htmlFor="mailTitleForm">件名</label>
-              </div>
-              <input
-                type="text"
-                id="mailTitleForm"
-                className="formInput"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              />
-              <div>
-                <label className='formInput' htmlFor="mailContentForm">お問い合わせ内容</label>
-              </div>
-              <textarea
-                type="text"
-                id="mailContentForm"
-                className="formInput con_from"
-                rows="5"
-                height="315px"
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-              />
-              <div className="btns">
+        {/* リンク */}
+        <div className='test_from'>
+          <div className='link_aria'>
+            <h2>リンク</h2>
+            <div className='link_contents'>
+              <h3>筑波大学</h3>
+              <ul>
+                <div className='link'><a href="http://www.tsukuba.ac.jp/">筑波大学</a></div>
+                <div className='link'><a href="http://sse.tsukuba.ac.jp/">筑波大学 理工学群</a></div>
+                <div className='link'><a href="http://chemistry.tsukuba.ac.jp/" >筑波大学 理工学群 化学類</a></div>
+                <div className='link'><a href="http://www.pas.tsukuba.ac.jp/" >筑波大学大学院 数理物質科学研究科</a></div>
+                <div className='link'><a href="http://www.chem.tsukuba.ac.jp/index.html" >筑波大学化学系 </a></div>
+                <div className='link'><a href="https://www.chem.tsukuba.ac.jp/webmail/" >Web mail (staff) roundcube</a></div>
+                <div className='link'><a href="https://dmb.chem.tsukuba.ac.jp/webmail/" >Web mail (dmb)</a></div>
+              </ul>
+              <h3>新学術領域</h3>
+                <ul>
+                  <div className='link'><a href="http://www.asymmetallic.jp/" target="_blank">配位アシンメトリー </a></div>
+              </ul>
+                <h3>所属学会</h3>
+                <ul>
+                    <div className='link'><a href="http://www.chemistry.or.jp/" target="_blank">日本化学会 </a></div>
+                    <div className='link'><a href="http://www.sakutai.jp/" target="_blank">錯体化学会 </a></div>
+                    <div className='link'><a href="http://www.sakutai.jp/yccaj/index.html" target="_blank">錯体化学若手の会</a></div>
+              </ul>
+            </div>
+          </div>
+
+        {/* お問いあわせフォーム */}
+          <div className="mainContent">
+            <h2 className="pageTitle">お問い合わせ</h2>
+            <div className="contentsBox">
+              <p>
+                お問い合わせは、以下のフォームから受け付けております。
+                <br />
+              </p>
+              <form>
                 <div>
-                  <button
-                    variant="contained"
-                    color="default"
-                    endIcon={<sendIcon />}
-                    onClick={handleClick}
-                    disabled={disableSend}
-                    className='from_submit'
-                  >
-                    <strong>送信</strong>
-                  </button>
+                  <label className="formInput " htmlFor="nameForm" >ご氏名</label>
                 </div>
+                <input
+                  type="text"
+                  id="nameForm"
+                  className="formInput"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
                 <div>
-                  <button
-                    variant="contained"
-                    color="default"
-                    endIcon={<clearIcon />}
-                    onClick={handleCanceled}
-                    className='cancel_btn'
-                  >
-                    <strong>キャンセル</strong>
-                  </button>
+                  <label className="formInput" htmlFor="companyNameForm">会社名</label>
                 </div>
-              </div>
-            </form>
+                <input
+                  type="text"
+                  id="companyNameForm"
+                  className="formInput"
+                  required
+                  value={company}
+                  onChange={(e) => setCompany(e.target.value)}
+                />
+                <div>
+                  <label className="formInput" htmlFor="mailForm">メールアドレス</label>
+                </div>
+                <input
+                  type="email"
+                  id="mailForm"
+                  className="formInput"
+                  value={mail}
+                  onChange={(e) => setMail(e.target.value)}
+                />
+                <div>
+                  <label className="formInput" htmlFor="mailTitleForm">件名</label>
+                </div>
+                <input
+                  type="text"
+                  id="mailTitleForm"
+                  className="formInput"
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                />
+                <div>
+                  <label className='formInput' htmlFor="mailContentForm">お問い合わせ内容</label>
+                </div>
+                <textarea
+                  type="text"
+                  id="mailContentForm"
+                  className="formInput con_from"
+                  rows="5"
+                  height="315px"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                />
+                <div className="btns">
+                  <div>
+                    <button
+                      variant="contained"
+                      color="default"
+                      endIcon={<sendIcon />}
+                      onClick={handleClick}
+                      disabled={disableSend}
+                      className='from_submit'
+                    >
+                      <strong>送信</strong>
+                    </button>
+                  </div>
+                  <div>
+                    <button
+                      variant="contained"
+                      color="default"
+                      endIcon={<clearIcon />}
+                      onClick={handleCanceled}
+                      className='cancel_btn'
+                    >
+                      <strong>キャンセル</strong>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-
       </div>
     );
   };

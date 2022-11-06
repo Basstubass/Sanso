@@ -131,8 +131,7 @@ export const Page1=()=>{
             </div>
             <hr width="90%"></hr>
           </div>
-          ))}
-          
+          ))}   
           {/* 更新エリア */}
         </div>
       </main>
