@@ -91,8 +91,8 @@ export const Page2=()=>{
             </div>
             <div className='member_profile_textcontents profile_dev'>
                 <h1> {users.name}</h1>
-                <h2> {users.name}</h2>
-                <p> {users.food}</p>
+                <h2> {users.user_name}</h2>
+                <p> {users.about}</p>
             </div>
           </div>
         </>

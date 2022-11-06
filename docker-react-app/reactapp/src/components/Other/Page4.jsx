@@ -1,6 +1,7 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import React, { useState, useRef } from 'react';
+import './other.css';
 // import { useEffect, useState } from "react";
 
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -41,7 +42,8 @@ export const Page4=()=>{
   // const user = auth.currentUser;
   //ユーザー追加hooks Stateの多用もっといい方法あるかも
   const [users, setUsers] = useState('')
-  const [food, setFoods] = useState('')
+  const [user_name, setUser_name] = useState('')
+  const [about, setAbout] = useState('')
   const [comments, setComments] = useState('')
   //Newsの追加
   const [title, setTitle] = useState('')
@@ -89,34 +91,37 @@ try{
   const [user] = useAuthState(auth)
   return (
     <div>
-      <h1>ログイン</h1>
-
       {user ? (
         // ログイン中
         <>
           <UserInfo/>
-          <div>
-            <h1>{auth.currentUser.displayName}</h1>
+          <div className="user_current_aria">
+            <h1>ログイン中</h1>
+            <img src={auth.currentUser.photoURL} alt="" className="user_info"/>
+            <h2 className="user_info">{auth.currentUser.displayName}</h2>
           </div>
           <div className="post_aria">
-
             <h1>メンバーの追加</h1>
               {/* ユーザーの追加 */}
             <div>
-              <p>メンバーの名前</p>
+              <p></p>
               <input value={users} onChange={(event) => setUsers(event.target.value)}/>
+            </div>
+            <div>
+              <p>氏名</p>
+              <input value={user_name} onChange={(event) => setUser_name(event.target.value)}/>
             </div>
               {/* フードの追加 */}
             <div>
-              <p>フード</p>
-              <input value={food} onChange={(event) => setFoods(event.target.value)}/>
+              <p>プロフィールの追加</p>
+              <input value={about} onChange={(event) => setAbout(event.target.value)}/>
             </div>
               {/* コメントの追加 */}
             <div>
               <p>コメント</p>
               <input  value={comments} onChange={(event) => setComments(event.target.value)}/>
             </div>
-            <button onClick={() => handleonClick_user_AddButton(users,food,comments, inputRef)}>メンバーの追加</button>
+            <button onClick={() => handleonClick_user_AddButton(users,user_name,about,comments, inputRef)}>メンバーの追加</button>
 
             <h1>Newsの追加</h1>
             {/* タイトルの追加 */}
@@ -225,11 +230,13 @@ try{
             
           </div>
         </div>
-
+        ):(
           <SignOutbutton/>
         </>
+        
       ): (
         <>
+         <h1>ログイン</h1>
          <SignInbutton/>
         </>
       )}
@@ -262,17 +269,20 @@ function SignOutbutton(){
 function UserInfo(){
   return(
     <>
-    Hello
+    <div className="poat_enable">
+      <h1>投稿</h1>
+    </div>
     </>
   )
 }
 
 ////////////////投稿用の関数/////////////
 //ユーザーハンドル
-const handleonClick_user_AddButton = async (users, food, comments) => {
+const handleonClick_user_AddButton = async (users, user_name, about, comments) => {
   await addDoc(collection(db, "users"), {
     name: users,
-    food: food,
+    user_name: user_name,
+    about: about,
     comments: comments,
     times: Timestamp.fromDate(new Date()),
   });

@@ -29,14 +29,14 @@ export const Patent=()=>{
         <div className='main'>
           <div className='news_animation_aria'>
             <h1>Patent</h1>
-            <h2>論文紹介</h2>
+            <h2>特許紹介</h2>
           </div>
   
           <div className='news'>
               <hr width="80%"></hr>
               <div className='news_aria news_text' id="patent_title">
                 <h1>Patent</h1>
-                <p>論文紹介</p>
+                <p>特許紹介</p>
               </div>
               
               <div className='radiobutton news_aria' id="jp_patent">
