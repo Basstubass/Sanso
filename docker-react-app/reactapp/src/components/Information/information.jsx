@@ -91,6 +91,7 @@ export const Information=()=>{
               </ul>
             </div>
           </div>
+
         {/* お問いあわせフォーム */}
           <div className="mainContent">
             <h2 className="pageTitle">お問い合わせ</h2>
