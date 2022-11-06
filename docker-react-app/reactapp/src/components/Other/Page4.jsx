@@ -61,29 +61,88 @@ export const Page4=()=>{
   const [dissertation_quote, setDissertation_quote] = useState('')
   const [dissertation_title, setDissertation_title] = useState('')
 
+  // projectの追加
+  const [project_title, setProject_title] = useState('');
+  const [project_text, setProject_text] = useState('');
+  const [need_image, setNeed_image] = useState(false);
+
   // 画像追加関数の状態管理する処理
-  const [image, setImage] = useState([]);
+  // const [image, setImage] = useState([]);
   const [patent_date, setPatent_date] = useState('')
+  const [project_image, setProject_image]=useState([]);
 
 ////////////////Storegeに保存する関数/////////////
-const handleChange = (e) =>{
-  setImage(e.target.files[0]);
-}
-const handleSubmit =(e)=>{
-  e.preventDefault();
 
-  console.log("imageが送信されました");
-}
-try{
-  const imageRef = ref(storage, image.name);
-
-  uploadBytes(imageRef, image).then(()=>{
-    console.log("Uploadに成功したで");
+const handleonClick_Project_AddButton = async (project_title, project_text, need_image, project_image, inputRef)=>{
+  await addDoc(collection(db, "project"),{
+    title:project_title,
+    text:project_text,
+    need_image:need_image,
+    times: Timestamp.fromDate(new Date()),
   });
-} catch(error){
-  console.log(error);
+  // storageに追加
+  if(need_image){
+    const storageRef = ref(storage, 'projects/'+ project_image.name);
+    const uploadTask = uploadBytesResumable(storageRef, project_image);
+
+    uploadTask.on('state_changed',(snapshot)=>{
+      const  progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+      console.log('Upload is '+progress+ '% done');
+      // eslint-disable-next-line default-case
+      switch(snapshot.state){
+        case 'paused':
+          console.log('Upload is paused');
+          break;
+        case 'running':
+          console.log('Upload is running');
+          break;
+      }
+    },(error)=>{
+      // eslint-disable-next-line default-case
+      switch(error.code){
+        case 'storage/unauthorized':
+          break;
+        case 'storage/canceled':
+          break;
+        case 'storage/unknown':
+          break;
+      }
+    },()=>{
+      getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+        console.log(`File available at`, downloadURL);
+      });
+    });
+  }
 }
 
+    // const storageRef = ref(storage, 'projects/'+ project_image.name);
+    // const uploadTask = uploadBytesResumable(storageRef, project_image);
+
+    // uploadTask.on('state_changed',(snapshot)=>{
+    //   const progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+    //   console.log('Upload is '+progress+ '% done');
+    //   switch(snapshot.state){
+    //     case 'paused':
+    //       console.log('Upload is paused');
+    //       break;
+    //     case 'running':
+    //       console.log('Upload is running');
+    //       break;
+    //   }
+    // },(error)=>{
+    //   switch(error.code){
+    //     case 'storage/unauthorized':
+    //       break;
+    //     case 'storage/canceled':
+    //       break;
+    //     case 'storage/unknown':
+    //       break;
+    //   }
+    // },()=>{
+    //   getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+    //     console.log(`File available at`, downloadURL);
+    //   });
+    // });
 
   //ログインhooks
   const [user] = useAuthState(auth)
@@ -186,11 +245,37 @@ try{
             </div>
             <button onClick={() => handleonClick_Dissertation_AddButton(dissertation_title, dissertation_overviews, dissertation_quote, dissertation_date, inputRef)}>Dissertation</button>
 
-            <h1>画像の追加</h1>
+
+            <h1>Projectの追加</h1>
+            <div>
+              <p>project_title</p>
+              <input ref={inputRef} value={project_title}  onChange = {(event)=>setProject_title(event.target.value)}/>
+            </div>
+            <div>
+              <p>project_text</p>
+              <input ref={inputRef} value={project_text}  onChange = {(event)=>setProject_text(event.target.value)}/>
+            </div>
+            <div>
+              <p>画像の有無</p>
+              <input type='checkbox' ref={inputRef} value={need_image}  onChange = {(event)=>setNeed_image(event.target.value)}/>
+            </div>
+            <div>
+              <p>project画像の追加</p>
+              <input type='file' ref={inputRef} value={project_image} onChange={(event)=> setProject_image(event.target.files[0])}/>
+            </div>
+            <button onClick={() => handleonClick_Project_AddButton(project_title, project_text, need_image, project_image, inputRef)}>Projectの追加</button>
+
+            {/* <h1>project画像の追加</h1>
+            <form onSubmit={handleChange}>
+              <input type='file' onChange={handleChange}/>
+              <button className="button">project画像追加</button>
+            </form> */}
+
+            {/* <h1>画像の追加</h1>
             <form onSubmit={handleSubmit}>
               <input type="file" onChange={handleChange} />
               <button className="button">追加</button>
-            </form>
+            </form> */}
           
             <h1>国内論文の追加</h1>
             <div>

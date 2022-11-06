@@ -132,20 +132,6 @@ export const Page1=()=>{
             <hr width="90%"></hr>
           </div>
           ))}
-
-          {/* 一旦、postをコメントアウト */}
-     {/* {post.map((value, index) => (
-            <div className='project_contents' key={index}>
-            <div className='project_contents_text project_aria'>
-              <h1>{value.id}</h1>
-              <p>{value.link}</p>
-            </div>
-            <div className='project_contents_img project_aria'>
-              <img src={images[index]} alt="" />
-            </div>
-            <hr width="90%"></hr>
-          </div>
-          ))} */}
           
           {/* 更新エリア */}
         </div>
