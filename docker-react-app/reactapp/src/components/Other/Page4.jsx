@@ -75,7 +75,7 @@ export const Page4=()=>{
 
 ////////////////Storegeに保存する関数/////////////
 
-const handleonClick_Project_AddButton = async (project_title, project_text, need_image, project_image, inputRef)=>{
+const handleonClick_Project_AddButton = async (project_title, project_text,need_image, inputRef)=>{
   // dbに追加
   await addDoc(collection(db, "project"),{
     title:project_title,
@@ -83,13 +83,14 @@ const handleonClick_Project_AddButton = async (project_title, project_text, need
     need_image:need_image,
     times: Timestamp.fromDate(new Date()),
   });
+}
   // storageに追加
-  if(need_image){
+const project_image_onsubmit = async (project_image)=>{
     const storageRef = ref(storage, 'projects/'+ project_image.name);
     const uploadTask = uploadBytesResumable(storageRef, project_image);
 
-    uploadTask.on('state_changed',(snapshot)=>{
-      const  progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+     uploadTask.on('state_changed',(snapshot)=>{
+      const progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
       console.log('Upload is '+progress+ '% done');
       // eslint-disable-next-line default-case
       switch(snapshot.state){
@@ -116,7 +117,7 @@ const handleonClick_Project_AddButton = async (project_title, project_text, need
       });
     });
   }
-}
+
 
     // const storageRef = ref(storage, 'projects/'+ project_image.name);
     // const uploadTask = uploadBytesResumable(storageRef, project_image);
@@ -261,18 +262,19 @@ const handleonClick_Project_AddButton = async (project_title, project_text, need
               <p>project_text</p>
               <input ref={inputRef} value={project_text}  onChange = {(event)=>setProject_text(event.target.value)}/>
             </div>
-            <div>
+            {/* <div>
               <p>画像の有無</p>
               <input type='checkbox' ref={inputRef} value={need_image}  onChange = {(event)=>setNeed_image(event.target.value)}/>
-            </div>
-            <div>
-              <p>project画像の追加</p>
+            </div> */}
+            {/* <div>
+              <p>projectの追加</p>
               <input type='file' ref={inputRef} value={project_image} onChange={(event)=> setProject_image(event.target.files[0])}/>
-            </div>
-            {/* <button onClick={() => handleonClick_Project_AddButton(project_title, project_text, need_image, project_image, inputRef)}>Projectの追加</button> */}
+            </div> */}
+            <button onClick={() => handleonClick_Project_AddButton(project_title, project_text, inputRef)}>Projectの追加</button>
+
 
             <h1>project画像の追加</h1>
-            <form onSubmit={(event)=>setProject_image(event.target.files[0])}>
+            <form onSubmit={project_image_onsubmit}>
               <input type='file' onChange={(event)=>setProject_image(event.target.files[0])}/>
               <button className="button">project画像追加</button>
             </form>
