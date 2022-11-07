@@ -85,11 +85,14 @@ const handleonClick_Project_AddButton = async (project_title, project_text,need_
   });
 }
   // storageに追加
-const project_image_onsubmit = async (project_image)=>{
+  const projecthandleSubmit =(e)=>{
+    e.preventDefault();
+  
+    console.log("imageが送信されました");
     const storageRef = ref(storage, 'projects/'+ project_image.name);
     const uploadTask = uploadBytesResumable(storageRef, project_image);
 
-     uploadTask.on('state_changed',(snapshot)=>{
+    uploadTask.on('state_changed',(snapshot)=>{
       const progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
       console.log('Upload is '+progress+ '% done');
       // eslint-disable-next-line default-case
@@ -117,7 +120,6 @@ const project_image_onsubmit = async (project_image)=>{
       });
     });
   }
-
 
     // const storageRef = ref(storage, 'projects/'+ project_image.name);
     // const uploadTask = uploadBytesResumable(storageRef, project_image);
@@ -274,7 +276,7 @@ const project_image_onsubmit = async (project_image)=>{
 
 
             <h1>project画像の追加</h1>
-            <form onSubmit={project_image_onsubmit}>
+            <form onSubmit={projecthandleSubmit}>
               <input type='file' onChange={(event)=>setProject_image(event.target.files[0])}/>
               <button className="button">project画像追加</button>
             </form>

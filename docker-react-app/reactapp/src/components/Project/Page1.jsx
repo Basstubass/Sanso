@@ -3,7 +3,7 @@ import noimage from './img/noimage.png';
 import React from "react";
 // import {useCollection} from "react-firebase-hooks/firestore";
 import { useEffect, useState } from "react";
-import { collection, getDocs, onSnapshot, query, where} from "firebase/firestore";
+import { collection, getDocs, onSnapshot, orderBy, query} from "firebase/firestore";
 import {getDownloadURL, ref, listAll} from "firebase/storage";
 import { db, storage } from "../../firebase";
 import video from "./7768_640x360.mp4";
@@ -31,7 +31,7 @@ export const Page1=()=>{
 
   useEffect(() => {
     //データ取得
-    const project_postData = collection(db, "project")
+    const project_postData = query(collection(db, "project"), orderBy("times", "desc"))
       getDocs(project_postData).then((snapShot) => {
       setProject(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
