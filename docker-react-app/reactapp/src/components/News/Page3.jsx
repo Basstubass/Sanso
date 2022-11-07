@@ -2,7 +2,7 @@ import './news.css';
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line
-import { collection, doc, getDocs, onSnapshot} from "firebase/firestore";
+import { collection, doc, getDocs, onSnapshot, orderBy, query} from "firebase/firestore";
 import { db } from "../../firebase";
 import dayjs from 'dayjs';
 
@@ -24,7 +24,7 @@ export const Page3=()=>{
 
   useEffect(() => {
     //データ取得
-    const news_postData = collection(db, "news")
+    const news_postData = query(collection(db, "news"), orderBy('times', 'desc'))
         getDocs(news_postData).then((snapShot) => {
         setNewsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
@@ -33,7 +33,7 @@ export const Page3=()=>{
       });
       // console.log(news_postData)
     
-    const topic_postData = collection(db, "topic")
+    const topic_postData = query(collection(db, "topic"), orderBy('times', 'desc'))
       getDocs(topic_postData).then((snapShot) => {
         setTopicsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
     });

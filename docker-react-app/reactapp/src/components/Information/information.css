@@ -101,15 +101,6 @@
     opacity: 1;
 }
 
-
-
-
-
-
-
-
-
-
 @media screen and (max-width: 480px) {
 
 
@@ -155,10 +146,4 @@
     .cancel_btn{
         margin-top: 3%;
     }
-
-
-
-
-
-
 }
