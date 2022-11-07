@@ -4,7 +4,7 @@ import Pasted_img from "./img/Pasted Graphic.jpg";
 import member_img from "./img/Pasted Graphic 2.jpg";
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, onSnapshot, limit, query} from "firebase/firestore";
+import { collection, getDocs, onSnapshot, limit, query, orderBy} from "firebase/firestore";
 import dayjs from 'dayjs';
 import { db } from "../../firebase";
 
@@ -23,7 +23,7 @@ export const Home=()=>{
   useEffect(() => {
     //データ取得
     const news_postData = collection(db, "news")
-        getDocs(query(news_postData, limit(5))).then((snapShot) => {
+        getDocs(query(news_postData, orderBy('times', 'desc'),limit(5))).then((snapShot) => {
         setNewsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
       });
       onSnapshot(news_postData, (news_post) => {
@@ -31,7 +31,7 @@ export const Home=()=>{
       });
     
     const topic_postData = collection(db, "topic")
-      getDocs(query(topic_postData, limit(5))).then((snapShot) => {
+      getDocs(query(topic_postData, orderBy('times', 'desc'),limit(5))).then((snapShot) => {
         setTopicsposts(snapShot.docs.map((doc) => ({ ...doc.data() })));
     });
     onSnapshot(topic_postData, (topic_post) => {

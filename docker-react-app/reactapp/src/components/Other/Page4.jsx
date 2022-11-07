@@ -72,6 +72,7 @@ export const Page4=()=>{
   // const [image, setImage] = useState([]);
   const [patent_date, setPatent_date] = useState('')
   const [project_image, setProject_image]=useState([]);
+  const [news_image, setNews_image] = useState([]);
 
 ////////////////Storegeに保存する関数/////////////
 
@@ -121,34 +122,53 @@ const handleonClick_Project_AddButton = async (project_title, project_text,need_
     });
   }
 
-    // const storageRef = ref(storage, 'projects/'+ project_image.name);
-    // const uploadTask = uploadBytesResumable(storageRef, project_image);
 
-    // uploadTask.on('state_changed',(snapshot)=>{
-    //   const progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-    //   console.log('Upload is '+progress+ '% done');
-    //   switch(snapshot.state){
-    //     case 'paused':
-    //       console.log('Upload is paused');
-    //       break;
-    //     case 'running':
-    //       console.log('Upload is running');
-    //       break;
-    //   }
-    // },(error)=>{
-    //   switch(error.code){
-    //     case 'storage/unauthorized':
-    //       break;
-    //     case 'storage/canceled':
-    //       break;
-    //     case 'storage/unknown':
-    //       break;
-    //   }
-    // },()=>{
-    //   getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
-    //     console.log(`File available at`, downloadURL);
-    //   });
-    // });
+  // const handleonClick_News_AddButton = async (news_title, news_text,need_image, inputRef)=>{
+  //   // dbに追加
+  //   await addDoc(collection(db, "news"),{
+  //     title:news_title,
+  //     text:news_text,
+  //     need_image:need_image,
+  //     times: Timestamp.fromDate(new Date()),
+  //   });
+  // }
+    // storageに追加
+    const newshandleSubmit =(e)=>{
+      e.preventDefault();
+    
+      console.log("imageが送信されました");
+      const storageRef = ref(storage, 'news/'+ news_image.name);
+      const uploadTask = uploadBytesResumable(storageRef, news_image);
+  
+      uploadTask.on('state_changed',(snapshot)=>{
+        const progress = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+        console.log('Upload is '+progress+ '% done');
+        // eslint-disable-next-line default-case
+        switch(snapshot.state){
+          case 'paused':
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            console.log('Upload is running');
+            break;
+        }
+      },(error)=>{
+        // eslint-disable-next-line default-case
+        switch(error.code){
+          case 'storage/unauthorized':
+            break;
+          case 'storage/canceled':
+            break;
+          case 'storage/unknown':
+            break;
+        }
+      },()=>{
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
+          console.log(`File available at`, downloadURL);
+        });
+      });
+    }
+
 
   //ログインhooks
   const [user] = useAuthState(auth)
@@ -198,6 +218,11 @@ const handleonClick_Project_AddButton = async (project_title, project_text,need_
               <input ref={inputRef} value={text} onChange={(event) => setText(event.target.value)}/>
             </div>
             <button onClick={() => handleonClick_News_AddButton(title,text, inputRef)}>News</button>
+            <h1>news画像の追加</h1>
+            <form onSubmit={newshandleSubmit}>
+              <input type='file' onChange={(event)=>setNews_image(event.target.files[0])}/>
+              <button className="button">project画像追加</button>
+            </form>
 
             <h1>Topicsの追加</h1>
             {/* タイトルの追加 */}
