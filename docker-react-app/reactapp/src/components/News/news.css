@@ -31,6 +31,9 @@
 
   /* font-family: 'Courier New', Courier, monospace; */
 }
+.news_title{
+  font-size: 15px;
+}
 .news_textcontainer hr{
   margin: 0;
 }

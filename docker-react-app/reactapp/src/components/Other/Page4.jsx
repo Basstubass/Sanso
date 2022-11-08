@@ -11,6 +11,10 @@ import { db, storage } from "../../firebase";
 // eslint-disable-next-line no-unused-vars
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
+import dayjs from 'dayjs';
+import { string } from "prop-types";
+
+
 export const Page4=()=>{
 
   const [loading, setLoading] = useState(false);
@@ -409,7 +413,10 @@ const handleonClick_News_AddButton = async (title, text, inputRef) => {
     editer: auth.currentUser.displayName,
     title: title,
     text: text,
-    times: Timestamp.fromDate(new Date()),
+    times: dayjs(new Date()).format('YYYY/MM/DD HH:mm'),
+
+    // times: dayjs(Timestamp.toDate()).format('YYYY/MM/DD HH:mm'),
+
   });
 }
 //トピックハンドル
@@ -418,7 +425,7 @@ const handleonClick_Topics_AddButton = async (tp_title, tp_text, inputRef) => {
     editer: auth.currentUser.displayName,
     title: tp_title,
     text: tp_text,
-    times: Timestamp.fromDate(new Date()),
+    times: dayjs(new Date()).format('YYYY/MM/DD HH:mm'),
   });
 }
 //ブックハンドル

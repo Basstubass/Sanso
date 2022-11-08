@@ -81,8 +81,9 @@ export const Page3=()=>{
               <a href='/news'>
                 <div className='news_meta'>
                   <p>{news.editer} : {dayjs(news.timestamp).format('YYYY/MM/DD HH:mm')}</p>
-                  <p>{news.text}</p>
+                  <p className='news_title'>{news.title}</p>
                 </div>
+                  <p>{news.text}</p>
                   <ul className='newsimg_aria'>
                     <li><img src={apple_img}/></li>
                     <li><img src={robot_img}/></li>
@@ -102,9 +103,9 @@ export const Page3=()=>{
                   <a href='/news'>
                 <div className='news_meta'>
                   <p>{topic.editer} : {dayjs(topic.timestamp).format('YYYY/MM/DD HH:mm')}</p>
-                  <p></p>
+                  <p className='topic_title'>{topic.title}</p>
                 </div>
-                <p>{topic.text}</p>
+                  <p>{topic.text}</p>
                   <ul className='newsimg_aria'>
                     <li><img src={apple_img}/></li>
                     <li><img src={robot_img}/></li>
