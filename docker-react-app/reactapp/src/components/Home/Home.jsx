@@ -113,7 +113,9 @@ export const Home=()=>{
                {news_post.map((news)=>(
               <div className='news_textcontents'>
               <a href='/news'>
-                  <p>{news.editer} : {dayjs(news.timestamp).format('YYYY/MM/DD HH:mm')}</p>
+                  <p>{news.editer} : {news.times}</p>
+                  {/* <p>{news.editer} : {}</p> */}
+
                   <p>{news.text}</p>
                   <hr width="60%"></hr>
                 </a>
@@ -127,7 +129,7 @@ export const Home=()=>{
             {topic_post.map((topic)=>(
             <div className={val ? "hidden" : "news_topics_aria"}>
               <div className='news_textcontents'>
-                <p>{topic.title}</p>
+                <p>{topic.editer}: {topic.times}</p>
                 <p>{topic.text}</p>
                 <hr width="60%"></hr>
               </div>
