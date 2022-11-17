@@ -12,7 +12,6 @@ import { db, storage } from "../../firebase";
 import { ref, uploadBytes, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 import dayjs from 'dayjs';
-import { string } from "prop-types";
 
 
 export const Page4=()=>{
@@ -70,7 +69,7 @@ export const Page4=()=>{
   // projectの追加
   const [project_title, setProject_title] = useState('');
   const [project_text, setProject_text] = useState('');
-  const [need_image, setNeed_image] = useState(true);
+  // const [need_image, setNeed_image] = useState(true);
 
   // 画像追加関数の状態管理する処理
   // const [image, setImage] = useState([]);

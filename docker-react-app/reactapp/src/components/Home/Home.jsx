@@ -5,7 +5,7 @@ import member_img from "./img/Pasted Graphic 2.jpg";
 // eslint-disable-next-line
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs, onSnapshot, limit, query, orderBy} from "firebase/firestore";
-import dayjs from 'dayjs';
+// import dayjs from 'dayjs';
 import { db } from "../../firebase";
 
 export const Home=()=>{
