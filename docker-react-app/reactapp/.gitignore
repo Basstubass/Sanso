@@ -24,4 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 
-../process.env
+../../process.env
